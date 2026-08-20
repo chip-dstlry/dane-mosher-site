@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Performance Specialty Medicine — Dane Mosher, DO</title>
+<meta name="description" content="Root-cause functional medicine in Coeur d'Alene, Idaho. Dr. Dane Mosher, DO — mitochondrial testing, repair, energy, and health optimization.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='42' fill='%23f0a44b'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Instrument+Sans:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500&display=swap">
+<style>
+  :root{
+    --ground:#070e0c;
+    --surface:#0d1714;
+    --surface-2:#122019;
+    --line:#1e2f27;
+    --ink:#edf4ef;
+    --muted:#8ea79a;
+    --faint:#597064;
+    --ember:#f0a44b;
+    --ember-soft:rgba(240,164,75,.18);
+    --cell:#54cfa8;
+    --cell-soft:rgba(84,207,168,.12);
+    --display:'Bricolage Grotesque','Avenir Next','Helvetica Neue',sans-serif;
+    --body:'Instrument Sans','Helvetica Neue',Arial,sans-serif;
+    --mono:'Spline Sans Mono','SF Mono',Menlo,monospace;
+  }
+  *{box-sizing:border-box}
+  html.lenis,html.lenis body{height:auto}
+  .lenis.lenis-smooth{scroll-behavior:auto!important}
+  body{
+    background:var(--ground);color:var(--ink);
+    font-family:var(--body);font-size:17px;line-height:1.65;
+    -webkit-font-smoothing:antialiased;margin:0;overflow-x:hidden;
+  }
+  ::selection{background:var(--ember);color:var(--ground)}
+  a{color:var(--ember);text-decoration:none}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--ember);outline-offset:3px;border-radius:2px}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 clamp(20px,4vw,56px)}
+  .mono{font-family:var(--mono)}
+
+  /* ---------- grain ---------- */
+  .grain{
+    position:fixed;inset:-50%;z-index:200;pointer-events:none;opacity:.055;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    animation:grain 8s steps(10) infinite;
+  }
+  @keyframes grain{
+    0%,100%{transform:translate(0,0)}10%{transform:translate(-5%,-8%)}20%{transform:translate(-13%,3%)}
+    30%{transform:translate(7%,-20%)}40%{transform:translate(-5%,20%)}50%{transform:translate(-13%,8%)}
+    60%{transform:translate(13%,0)}70%{transform:translate(0,13%)}80%{transform:translate(3%,30%)}90%{transform:translate(-8%,10%)}
+  }
+
+  /* ---------- preloader ---------- */
+  #loader{
+    position:fixed;inset:0;z-index:300;background:var(--ground);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;
+  }
+  #loader .l-label{font-family:var(--mono);font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--faint)}
+  #loader .l-count{font-family:var(--display);font-weight:640;font-size:clamp(64px,12vw,140px);line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+  #loader .l-count sup{font-size:.28em;color:var(--ember);font-family:var(--mono);font-weight:400;letter-spacing:.1em;top:-2.2em}
+  #loader .l-bar{width:min(320px,60vw);height:1px;background:var(--line);position:relative;overflow:hidden}
+  #loader .l-bar i{position:absolute;inset:0;background:var(--ember);transform:scaleX(0);transform-origin:left}
+
+  /* ---------- custom cursor ---------- */
+  @media(pointer:fine){
+    .cursor-dot,.cursor-ring{position:fixed;top:0;left:0;z-index:250;pointer-events:none;border-radius:50%;will-change:transform}
+    .cursor-dot{width:6px;height:6px;background:var(--ember);margin:-3px 0 0 -3px}
+    .cursor-ring{width:34px;height:34px;border:1px solid rgba(240,164,75,.4);margin:-17px 0 0 -17px;transition:width .25s,height .25s,margin .25s,border-color .25s}
+    .cursor-ring.is-hover{width:56px;height:56px;margin:-28px 0 0 -28px;border-color:var(--cell)}
+  }
+
+  /* ---------- fixed shader bg ---------- */
+  #bio{position:fixed;inset:0;z-index:-1;width:100%;height:100%}
+
+  /* ---------- hud frame ---------- */
+  .hud{position:fixed;z-index:60;font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--faint);pointer-events:none}
+  .hud-bl{left:22px;bottom:18px}
+  .hud-br{right:22px;bottom:18px;text-align:right}
+  @media(max-width:820px){.hud{display:none}}
+
+  /* ---------- nav ---------- */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;mix-blend-mode:normal}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:20px 0}
+  .brand{display:flex;align-items:center;gap:12px;color:var(--ink)}
+  .brand-mark{width:32px;height:32px;border-radius:50%;flex:none;
+    background:radial-gradient(circle at 35% 35%, var(--ember), #b05f14 60%, #3a2408 100%);
+    box-shadow:0 0 18px var(--ember-soft);animation:pulse 4s ease-in-out infinite}
+  @keyframes pulse{0%,100%{box-shadow:0 0 12px var(--ember-soft)}50%{box-shadow:0 0 26px rgba(240,164,75,.4)}}
+  .brand-name{font-family:var(--display);font-weight:600;font-size:14px;line-height:1.2}
+  .brand-name small{display:block;font-family:var(--mono);font-weight:400;font-size:9px;letter-spacing:.2em;color:var(--faint);text-transform:uppercase}
+  .nav-links{display:flex;gap:26px;align-items:center}
+  .nav-links a{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-cta{color:var(--ground)!important;background:var(--ember);padding:9px 18px;border-radius:999px;font-weight:500}
+  @media(max-width:820px){.nav-links a:not(.nav-cta){display:none}}
+
+  /* ---------- hero ---------- */
+  header{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;padding-bottom:4vh}
+  .hero-meta{
+    display:flex;gap:34px;flex-wrap:wrap;
+    font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--cell);
+    margin-bottom:3vh;
+  }
+  .hero-meta span{display:flex;align-items:center;gap:10px}
+  .hero-meta span::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--cell);box-shadow:0 0 10px var(--cell)}
+  h1{
+    font-family:var(--display);font-weight:680;
+    font-size:clamp(52px,10.5vw,170px);
+    line-height:.92;letter-spacing:-.035em;margin:0;
+    text-transform:uppercase;
+  }
+  h1 .row{display:block;overflow:hidden}
+  h1 .row>span{display:block;transform:translateY(115%)}
+  h1 .ghost{
+    color:transparent;-webkit-text-stroke:1.5px rgba(237,244,239,.34);
+  }
+  h1 .amber{color:var(--ember)}
+  .hero-foot{
+    display:flex;justify-content:space-between;align-items:flex-end;gap:28px;flex-wrap:wrap;
+    margin-top:4.5vh;border-top:1px solid var(--line);padding-top:26px;
+  }
+  .hero-foot p{max-width:30em;color:var(--muted);margin:0;font-size:16px}
+  .hero-foot p strong{color:var(--ink)}
+  .btn{
+    font-family:var(--mono);font-size:13px;letter-spacing:.05em;font-weight:500;
+    padding:16px 32px;border-radius:999px;display:inline-block;white-space:nowrap;
+    transition:box-shadow .2s ease;
+  }
+  .btn-primary{background:var(--ember);color:var(--ground)}
+  .btn-primary:hover{box-shadow:0 6px 40px rgba(240,164,75,.35)}
+  .btn-ghost{border:1px solid var(--line);color:var(--ink)}
+  .btn-ghost:hover{border-color:var(--faint)}
+
+  /* portrait — webgl, floats right */
+  .portrait{
+    position:absolute;right:clamp(16px,5vw,80px);top:50%;
+    width:clamp(220px,26vw,380px);transform:translateY(-62%);
+    z-index:2;
+  }
+  .portrait-inner{position:relative;aspect-ratio:3/4;border-radius:16px;overflow:hidden;border:1px solid var(--line);
+    box-shadow:0 50px 120px rgba(0,0,0,.6), 0 0 80px var(--ember-soft)}
+  .portrait-inner canvas,.portrait-inner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+  .portrait-inner img{filter:grayscale(1) contrast(1.1)}
+  .portrait-hud{
+    position:absolute;left:-1px;top:-1px;right:-1px;bottom:-1px;pointer-events:none;z-index:3;
+  }
+  .portrait-hud i{position:absolute;width:18px;height:18px;border:1.5px solid var(--ember)}
+  .portrait-hud i:nth-child(1){left:-6px;top:-6px;border-right:none;border-bottom:none}
+  .portrait-hud i:nth-child(2){right:-6px;top:-6px;border-left:none;border-bottom:none}
+  .portrait-hud i:nth-child(3){left:-6px;bottom:-6px;border-right:none;border-top:none}
+  .portrait-hud i:nth-child(4){right:-6px;bottom:-6px;border-left:none;border-top:none}
+  .portrait-cap{
+    position:absolute;left:0;right:0;bottom:-34px;display:flex;justify-content:space-between;
+    font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);
+  }
+  .portrait-cap b{color:var(--cell);font-weight:400}
+  @media(max-width:920px){
+    .portrait{position:relative;right:auto;top:auto;transform:none;margin:8vh auto 0;order:-1}
+    header{justify-content:center;padding-top:110px}
+  }
+
+  /* ---------- ticker ---------- */
+  .ticker{border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;background:rgba(13,23,20,.5);backdrop-filter:blur(6px)}
+  .ticker-inner{display:flex;gap:0;white-space:nowrap;width:max-content;animation:drift 36s linear infinite;padding:14px 0}
+  .ticker-inner span{font-family:var(--display);font-weight:600;font-size:15px;letter-spacing:.02em;text-transform:uppercase;padding:0 28px;color:var(--muted)}
+  .ticker-inner span::after{content:"✦";color:var(--ember);margin-left:56px;font-size:11px}
+  @keyframes drift{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ---------- sections ---------- */
+  section{position:relative;padding:clamp(90px,14vh,160px) 0}
+  .idx{font-family:var(--mono);font-size:11px;letter-spacing:.3em;color:var(--ember);text-transform:uppercase;display:block;margin-bottom:22px}
+  h2{font-family:var(--display);font-size:clamp(34px,4.6vw,64px);font-weight:640;letter-spacing:-.025em;line-height:1.02;margin:0 0 20px;text-wrap:balance;text-transform:uppercase}
+  .sect-head{max-width:720px;margin-bottom:clamp(40px,7vh,70px)}
+  .sect-head p{color:var(--muted);margin:0;font-size:17px}
+  .reveal{opacity:0;transform:translateY(40px)}
+
+  /* pillars — horizontal pin */
+  #pillars{padding:0;overflow:hidden}
+  .pillars-pin{position:relative}
+  .pillars-head{padding:clamp(90px,14vh,150px) 0 40px}
+  .track{display:flex;gap:clamp(16px,2vw,28px);padding:0 clamp(20px,4vw,56px) clamp(90px,12vh,140px);width:max-content}
+  .panel{
+    width:clamp(300px,38vw,520px);flex:none;
+    border:1px solid var(--line);border-radius:20px;background:rgba(13,23,20,.72);backdrop-filter:blur(8px);
+    padding:clamp(28px,3vw,44px);position:relative;overflow:hidden;
+    display:flex;flex-direction:column;justify-content:flex-end;min-height:clamp(340px,46vh,460px);
+  }
+  .panel .big{
+    position:absolute;top:-10px;right:6px;
+    font-family:var(--display);font-weight:700;font-size:clamp(110px,12vw,180px);line-height:1;
+    color:transparent;-webkit-text-stroke:1px rgba(240,164,75,.28);
+  }
+  .panel h3{font-family:var(--display);font-weight:640;font-size:clamp(24px,2.4vw,34px);letter-spacing:-.015em;margin:0 0 14px;text-transform:uppercase}
+  .panel p{color:var(--muted);margin:0;font-size:15.5px;max-width:26em}
+  .panel .tag{font-family:var(--mono);font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--cell);margin-bottom:auto;padding-bottom:60px}
+  @media(max-width:900px){
+    .track{width:auto;flex-direction:column;padding-left:clamp(20px,4vw,56px);padding-right:clamp(20px,4vw,56px)}
+    .panel{width:100%;min-height:0}
+  }
+
+  /* modalities */
+  #modalities{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .mods{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0 clamp(32px,5vw,80px)}
+  .mod{display:flex;gap:18px;padding:24px 0;border-bottom:1px solid var(--line);align-items:baseline}
+  .mod-num{font-family:var(--mono);font-size:11px;color:var(--ember);letter-spacing:.1em;flex:none;width:28px}
+  .mod b{display:block;font-weight:600;font-size:16px}
+  .mod span{color:var(--muted);font-size:14.5px}
+
+  /* about */
+  .about{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(32px,6vw,100px)}
+  .about-side{position:sticky;top:120px;align-self:start}
+  .about-copy p{color:var(--muted);margin:0 0 20px;max-width:38em;font-size:17px}
+  .about-copy p strong{color:var(--ink)}
+  .pull{
+    font-family:var(--display);font-weight:560;font-size:clamp(22px,2.4vw,30px);
+    line-height:1.25;letter-spacing:-.015em;color:var(--ink);
+    border-left:2px solid var(--ember);padding-left:26px;margin:36px 0;text-wrap:balance;
+  }
+  .creds{margin-top:42px}
+  .cred{display:grid;grid-template-columns:78px 1fr;gap:20px;padding:18px 0;border-top:1px solid var(--line);align-items:baseline}
+  .cred time{font-family:var(--mono);font-size:13px;color:var(--ember);letter-spacing:.04em}
+  .cred b{font-weight:600;display:block;font-size:15.5px}
+  .cred span{color:var(--muted);font-size:14px}
+  @media(max-width:860px){.about{grid-template-columns:1fr}.about-side{position:static}}
+
+  /* outline marquee divider */
+  .shout{overflow:hidden;padding:clamp(30px,5vh,60px) 0;border-top:1px solid var(--line)}
+  .shout-inner{display:flex;white-space:nowrap;width:max-content;will-change:transform}
+  .shout-inner b{
+    font-family:var(--display);font-weight:700;text-transform:uppercase;letter-spacing:-.03em;
+    font-size:clamp(70px,11vw,170px);line-height:1;padding-right:60px;
+    color:transparent;-webkit-text-stroke:1.5px rgba(237,244,239,.22);
+  }
+  .shout-inner b em{font-style:normal;-webkit-text-stroke:0;color:var(--ember)}
+
+  /* visit */
+  #visit .visit-card{
+    border:1px solid var(--line);border-radius:26px;
+    background:radial-gradient(80% 120% at 85% 0%, var(--ember-soft), transparent 55%), rgba(13,23,20,.8);
+    backdrop-filter:blur(10px);
+    padding:clamp(40px,6vw,80px);
+    display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(28px,5vw,70px);align-items:center;
+  }
+  .visit-card>div>p{color:var(--muted);margin:0 0 32px;max-width:30em}
+  .visit-meta{display:grid;gap:24px}
+  .vm{border-left:1px solid var(--line);padding-left:22px}
+  .vm small{font-family:var(--mono);font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--faint);display:block;margin-bottom:6px}
+  .vm div{font-size:16px;line-height:1.5}
+  .vm a{color:var(--ink)}
+  .vm a:hover{color:var(--ember)}
+  @media(max-width:860px){#visit .visit-card{grid-template-columns:1fr}}
+
+  footer{border-top:1px solid var(--line);padding:34px 0 60px}
+  .foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:var(--faint);font-size:13px}
+  .foot .fm{font-family:var(--mono);letter-spacing:.14em;text-transform:uppercase;font-size:10px}
+
+  @media(prefers-reduced-motion:reduce){
+    .grain,.ticker-inner{animation:none}
+    .brand-mark{animation:none}
+    #loader{display:none}
+    h1 .row>span{transform:none}
+    .reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+<canvas id="bio" aria-hidden="true"></canvas>
+
+<div id="loader" aria-hidden="true">
+  <div class="l-label">Calibrating · Mitochondrial Field</div>
+  <div class="l-count"><span id="count">000</span><sup>%</sup></div>
+  <div class="l-bar"><i id="bar"></i></div>
+</div>
+
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
+
+<div class="hud hud-bl">47.6777° N · 116.7805° W<br>Coeur d'Alene · Idaho</div>
+<div class="hud hud-br"><span id="clock">--:--:--</span> PT<br>System nominal</div>
+
+<nav>
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top" data-magnet>
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-name">Performance Specialty Medicine<small>Dane Mosher, DO</small></span>
+    </a>
+    <div class="nav-links">
+      <a href="#pillars" data-scramble>Approach</a>
+      <a href="#modalities" data-scramble>Modalities</a>
+      <a href="#about" data-scramble>Dr. Mosher</a>
+      <a href="#visit" data-scramble>Visit</a>
+      <a class="nav-cta" href="tel:+12082541986" data-magnet>(208) 254-1986</a>
+    </div>
+  </div>
+</nav>
+
+<header id="top">
+  <div class="portrait">
+    <div class="portrait-inner" id="portrait">
+      <img src="../assets/dane.jpg" alt="Dr. Dane Mosher, DO" id="portrait-img">
+    </div>
+    <div class="portrait-hud" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <div class="portrait-cap" aria-hidden="true"><span>Subject · Mosher_D</span><b>● Live</b></div>
+  </div>
+  <div class="wrap">
+    <div class="hero-meta">
+      <span data-scramble-once>Root-cause medicine</span>
+      <span data-scramble-once>Functional · Environmental</span>
+    </div>
+    <h1>
+      <span class="row"><span>Health at</span></span>
+      <span class="row"><span class="ghost">cellular</span></span>
+      <span class="row"><span><span class="amber">resolution</span>.</span></span>
+    </h1>
+    <div class="hero-foot">
+      <p class="reveal">Most medicine manages symptoms. <strong>Dr. Dane Mosher, DO</strong> works upstream — measuring how your cells produce energy, finding what's interfering, and repairing the system at its root.</p>
+      <div style="display:flex;gap:14px;flex-wrap:wrap" class="reveal">
+        <a class="btn btn-primary" href="tel:+12082541986" data-magnet>Book a consultation</a>
+        <a class="btn btn-ghost" href="#pillars" data-magnet>Enter</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-inner">
+    <span>Mitochondrial testing</span><span>Environmental medicine</span><span>Medical ozone therapy</span><span>Circadian optimization</span><span>Immunotherapy</span><span>Hormone balance</span><span>Health optimization</span>
+    <span>Mitochondrial testing</span><span>Environmental medicine</span><span>Medical ozone therapy</span><span>Circadian optimization</span><span>Immunotherapy</span><span>Hormone balance</span><span>Health optimization</span>
+  </div>
+</div>
+
+<section id="pillars">
+  <div class="pillars-pin">
+    <div class="wrap pillars-head">
+      <span class="idx">01 · The approach</span>
+      <h2 class="reveal">Four ways in.<br>One question: why?</h2>
+    </div>
+    <div class="track" id="track">
+      <div class="panel">
+        <span class="big">01</span>
+        <span class="tag">Signal</span>
+        <h3>Energy</h3>
+        <p>Fatigue isn't a personality trait — it's a cellular signal. We look at how your mitochondria are producing energy, and what's draining the battery.</p>
+      </div>
+      <div class="panel">
+        <span class="big">02</span>
+        <span class="tag">Measure</span>
+        <h3>Mitochondrial Testing</h3>
+        <p>Objective measurement of cellular energy production, so treatment targets what the data shows — not a guess.</p>
+      </div>
+      <div class="panel">
+        <span class="big">03</span>
+        <span class="tag">Rebuild</span>
+        <h3>Repair</h3>
+        <p>Removing what interferes — toxins, hidden stressors, immune triggers — and giving the body what it needs to rebuild itself.</p>
+      </div>
+      <div class="panel">
+        <span class="big">04</span>
+        <span class="tag">Ascend</span>
+        <h3>Health Optimization</h3>
+        <p>"Normal labs" is a low bar. The goal is function: better energy, sharper cognition, deeper resilience — measurably, over time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="modalities">
+  <div class="wrap">
+    <div class="sect-head reveal">
+      <span class="idx">02 · The toolkit</span>
+      <h2>Instruments of a wider practice</h2>
+      <p>A functional and environmental medicine practice draws on a broader set of tools than a standard clinic. These are the ones Dr. Mosher reaches for.</p>
+    </div>
+    <div class="mods">
+      <div class="mod reveal"><span class="mod-num">M1</span><div><b>Functional medicine</b><span>IFM-certified, root-cause diagnostic framework since 2015.</span></div></div>
+      <div class="mod reveal"><span class="mod-num">M2</span><div><b>Environmental medicine</b><span>Identifying and treating the effects of toxins and environmental exposures.</span></div></div>
+      <div class="mod reveal"><span class="mod-num">M3</span><div><b>Immunotherapy</b><span>For allergies and autoimmune conditions — retraining the immune response.</span></div></div>
+      <div class="mod reveal"><span class="mod-num">M4</span><div><b>Medical ozone therapies</b><span>Oxidative therapies to support repair and immune function.</span></div></div>
+      <div class="mod reveal"><span class="mod-num">M5</span><div><b>Hormone &amp; immune balance</b><span>Untangling hormone imbalances and immune dysfunction at their source.</span></div></div>
+      <div class="mod reveal"><span class="mod-num">M6</span><div><b>Light &amp; circadian optimization</b><span>Using light exposure and circadian rhythm as clinical tools.</span></div></div>
+      <div class="mod reveal"><span class="mod-num">M7</span><div><b>Hair tissue mineral analysis</b><span>Reading mineral status and heavy-metal burden over time.</span></div></div>
+      <div class="mod reveal"><span class="mod-num">M8</span><div><b>Autism spectrum care</b><span>Functional-medicine support for the autism community since 2011.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap about">
+    <div class="about-side reveal">
+      <span class="idx">03 · The physician</span>
+      <h2>Chasing this question since age fifteen</h2>
+      <div class="creds">
+        <div class="cred"><time>DO</time><div><b>Family Medicine residency</b><span>East Tennessee State University</span></div></div>
+        <div class="cred"><time>2011</time><div><b>The Johnson Center for Child Health &amp; Development</b><span>Serving the autism community, Austin, TX</span></div></div>
+        <div class="cred"><time>2015</time><div><b>Certified Functional Medicine Practitioner</b><span>Institute for Functional Medicine</span></div></div>
+        <div class="cred"><time>2017</time><div><b>Board service</b><span>American Academy of Environmental Medicine</span></div></div>
+      </div>
+    </div>
+    <div class="about-copy">
+      <p class="reveal">At fifteen, Dane Mosher read <strong><em>Life Extension</em></strong> by Durk Pearson and Sandy Shaw — and came away with an idea that has driven his entire career: health isn't something that happens to you. It's something you can measure, understand, and engineer.</p>
+      <p class="reveal">That conviction carried him through a Family Medicine residency at East Tennessee State University, into functional medicine certification through the Institute for Functional Medicine, and onto the board of the American Academy of Environmental Medicine. Since 2011 he has served the autism community through The Johnson Center for Child Health and Development in Austin, Texas, applying functional medicine where conventional approaches had run out of answers.</p>
+      <p class="pull reveal">"I aim to be the physician I would choose for myself."</p>
+      <p class="reveal">That's the standard behind Performance Specialty Medicine: your health is very much under your control — connected to diet, lifestyle, nutrition, and environment. Dr. Mosher's job is to give you the data, the tools, and a clear plan to take it back.</p>
+    </div>
+  </div>
+</section>
+
+<div class="shout" aria-hidden="true">
+  <div class="shout-inner" id="shout">
+    <b>Repair · Energy · <em>Optimize</em> · Repair · Energy · <em>Optimize</em> · </b>
+    <b>Repair · Energy · <em>Optimize</em> · Repair · Energy · <em>Optimize</em> · </b>
+  </div>
+</div>
+
+<section id="visit">
+  <div class="wrap">
+    <div class="visit-card reveal">
+      <div>
+        <span class="idx">04 · Start here</span>
+        <h2>One conversation. A different kind of medicine.</h2>
+        <p>The practice is located inside The Collective in Coeur d'Alene. Call to schedule an initial consultation.</p>
+        <a class="btn btn-primary" href="tel:+12082541986" data-magnet>Call (208) 254-1986</a>
+      </div>
+      <div class="visit-meta">
+        <div class="vm"><small>Location</small><div>Inside The Collective<br>2238 N Government Way<br>Coeur d'Alene, Idaho 83814</div></div>
+        <div class="vm"><small>Phone</small><div><a href="tel:+12082541986">(208) 254-1986</a></div></div>
+        <div class="vm"><small>Practice</small><div>Performance Specialty Medicine<br>Dane Mosher, DO</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <span class="fm">Performance Specialty Medicine</span>
+    <span>© 2026 · Coeur d'Alene, Idaho</span>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script>
+(function(){
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine = window.matchMedia('(pointer: fine)').matches;
+
+  /* ---------- clock ---------- */
+  function clock(){
+    var el = document.getElementById('clock');
+    if (!el) return;
+    var d = new Date();
+    el.textContent = [d.getHours(), d.getMinutes(), d.getSeconds()]
+      .map(function(n){ return String(n).padStart(2,'0'); }).join(':');
+  }
+  clock(); setInterval(clock, 1000);
+
+  /* ---------- text scramble ---------- */
+  var CHARS = '▮▯/\\|<>*+·ABCDEFGHKMNPRSTX0123456789';
+  function scramble(el, dur){
+    var target = el.dataset.orig || el.textContent;
+    el.dataset.orig = target;
+    var frame = 0, total = Math.round((dur || 500) / 30);
+    if (el._scr) clearInterval(el._scr);
+    el._scr = setInterval(function(){
+      frame++;
+      var done = Math.floor(target.length * frame / total);
+      var out = '';
+      for (var i = 0; i < target.length; i++) {
+        out += i < done || target[i] === ' ' ? target[i]
+             : CHARS[Math.floor(Math.random() * CHARS.length)];
+      }
+      el.textContent = out;
+      if (frame >= total) { el.textContent = target; clearInterval(el._scr); el._scr = null; }
+    }, 30);
+  }
+  if (!reduced) {
+    document.querySelectorAll('[data-scramble]').forEach(function(el){
+      el.addEventListener('mouseenter', function(){ scramble(el, 400); });
+    });
+  }
+
+  /* ---------- custom cursor + magnetic ---------- */
+  if (fine && !reduced) {
+    var dot = document.querySelector('.cursor-dot'), ring = document.querySelector('.cursor-ring');
+    var mx = -100, my = -100, rx = -100, ry = -100;
+    addEventListener('pointermove', function(e){ mx = e.clientX; my = e.clientY; });
+    (function cur(){
+      rx += (mx - rx) * .16; ry += (my - ry) * .16;
+      dot.style.transform = 'translate(' + mx + 'px,' + my + 'px)';
+      ring.style.transform = 'translate(' + rx + 'px,' + ry + 'px)';
+      requestAnimationFrame(cur);
+    })();
+    document.querySelectorAll('a,button').forEach(function(el){
+      el.addEventListener('mouseenter', function(){ ring.classList.add('is-hover'); });
+      el.addEventListener('mouseleave', function(){ ring.classList.remove('is-hover'); });
+    });
+    document.querySelectorAll('[data-magnet]').forEach(function(el){
+      el.addEventListener('pointermove', function(e){
+        var r = el.getBoundingClientRect();
+        var dx = e.clientX - (r.left + r.width/2), dy = e.clientY - (r.top + r.height/2);
+        el.style.transform = 'translate(' + dx * .18 + 'px,' + dy * .3 + 'px)';
+      });
+      el.addEventListener('pointerleave', function(){
+        el.style.transition = 'transform .4s cubic-bezier(.22,1,.36,1)';
+        el.style.transform = '';
+        setTimeout(function(){ el.style.transition = ''; }, 400);
+      });
+    });
+  } else {
+    document.querySelectorAll('.cursor-dot,.cursor-ring').forEach(function(el){ el.remove(); });
+  }
+
+  /* ---------- shader: bio-field background ---------- */
+  var bio = document.getElementById('bio');
+  if (bio && window.THREE && !reduced) {
+    var r1 = new THREE.WebGLRenderer({canvas: bio, alpha: true});
+    r1.setPixelRatio(Math.min(devicePixelRatio, 1.5));
+    var s1 = new THREE.Scene();
+    var c1 = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+    var u1 = {
+      u_time: {value: 0},
+      u_res: {value: new THREE.Vector2(1,1)},
+      u_scroll: {value: 0}
+    };
+    var frag = [
+      'precision highp float;',
+      'uniform float u_time; uniform vec2 u_res; uniform float u_scroll;',
+      'float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1,311.7))) * 43758.5453); }',
+      'float noise(vec2 p){',
+      '  vec2 i = floor(p), f = fract(p); f = f*f*(3.-2.*f);',
+      '  return mix(mix(hash(i), hash(i+vec2(1.,0.)), f.x), mix(hash(i+vec2(0.,1.)), hash(i+vec2(1.,1.)), f.x), f.y);',
+      '}',
+      'float fbm(vec2 p){',
+      '  float v = 0., a = .5;',
+      '  for (int i = 0; i < 5; i++){ v += a * noise(p); p = p * 2.03 + vec2(1.7); a *= .5; }',
+      '  return v;',
+      '}',
+      'void main(){',
+      '  vec2 uv = gl_FragCoord.xy / u_res;',
+      '  vec2 p = uv * vec2(u_res.x / u_res.y, 1.);',
+      '  float t = u_time * .05;',
+      '  float sc = u_scroll * .4;',
+      '  float n = fbm(p * 2.2 + vec2(t, -t * .6 + sc));',
+      '  float n2 = fbm(p * 3.4 - vec2(t * .8, sc * .7) + n);',
+      '  vec3 col = vec3(.027, .055, .047);',
+      '  col = mix(col, vec3(.04, .12, .095), smoothstep(.35, .85, n));',
+      '  float vein = smoothstep(.48, .5, n2) * smoothstep(.54, .5, n2);',
+      '  col += vec3(.33, .81, .66) * vein * .35;',
+      '  float ember = fbm(p * 1.6 + vec2(-t * 1.4, t + sc));',
+      '  col += vec3(.94, .64, .3) * smoothstep(.72, .98, ember) * .22;',
+      '  float vig = smoothstep(1.25, .35, distance(uv, vec2(.5, .45)));',
+      '  col *= mix(.55, 1., vig);',
+      '  gl_FragColor = vec4(col, 1.);',
+      '}'
+    ].join('\n');
+    var m1 = new THREE.ShaderMaterial({
+      uniforms: u1, fragmentShader: frag,
+      vertexShader: 'void main(){ gl_Position = vec4(position, 1.); }'
+    });
+    s1.add(new THREE.Mesh(new THREE.PlaneGeometry(2, 2), m1));
+    function size1(){
+      r1.setSize(innerWidth, innerHeight, false);
+      u1.u_res.value.set(r1.domElement.width, r1.domElement.height);
+    }
+    size1(); addEventListener('resize', size1);
+    var t0 = performance.now();
+    (function tick1(){
+      u1.u_time.value = (performance.now() - t0) / 1000;
+      u1.u_scroll.value = scrollY / innerHeight;
+      r1.render(s1, c1);
+      requestAnimationFrame(tick1);
+    })();
+  }
+
+  /* ---------- shader: liquid duotone portrait ---------- */
+  var holder = document.getElementById('portrait');
+  var img = document.getElementById('portrait-img');
+  if (holder && window.THREE && !reduced) {
+    new THREE.TextureLoader().load(img.src, function(tex){
+      tex.minFilter = THREE.LinearFilter;
+      var cnv = document.createElement('canvas');
+      holder.appendChild(cnv);
+      img.style.visibility = 'hidden';
+      var r2 = new THREE.WebGLRenderer({canvas: cnv, alpha: true});
+      r2.setPixelRatio(Math.min(devicePixelRatio, 2));
+      var s2 = new THREE.Scene();
+      var c2 = new THREE.OrthographicCamera(-.5, .5, .5, -.5, 0, 1);
+      var u2 = {
+        u_tex: {value: tex},
+        u_time: {value: 0},
+        u_mouse: {value: new THREE.Vector2(.5, .5)},
+        u_str: {value: 0}
+      };
+      var frag2 = [
+        'precision highp float;',
+        'uniform sampler2D u_tex; uniform float u_time; uniform vec2 u_mouse; uniform float u_str;',
+        'varying vec2 vUv;',
+        'float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1,311.7))) * 43758.5453); }',
+        'float noise(vec2 p){',
+        '  vec2 i = floor(p), f = fract(p); f = f*f*(3.-2.*f);',
+        '  return mix(mix(hash(i), hash(i+vec2(1.,0.)), f.x), mix(hash(i+vec2(0.,1.)), hash(i+vec2(1.,1.)), f.x), f.y);',
+        '}',
+        'void main(){',
+        '  vec2 uv = vUv;',
+        '  float d = distance(uv, u_mouse);',
+        '  float ripple = sin(d * 34. - u_time * 5.) * exp(-d * 5.5);',
+        '  vec2 dir = d > .001 ? normalize(uv - u_mouse) : vec2(0.);',
+        '  uv += dir * ripple * .028 * u_str;',
+        '  uv += (noise(uv * 6. + u_time * .4) - .5) * .012 * u_str;',
+        '  vec3 c = texture2D(u_tex, uv).rgb;',
+        '  float lum = dot(c, vec3(.299, .587, .114));',
+        '  lum = pow(lum, 1.06);',
+        '  vec3 col = mix(vec3(.03, .06, .05), vec3(.93, .96, .94), lum);',
+        '  col = mix(col, vec3(.07, .25, .2), (1. - smoothstep(.0, .45, lum)) * .55);',
+        '  col += vec3(.94, .64, .3) * smoothstep(.68, 1., lum) * .38;',
+        '  gl_FragColor = vec4(col, 1.);',
+        '}'
+      ].join('\n');
+      var m2 = new THREE.ShaderMaterial({
+        uniforms: u2, fragmentShader: frag2,
+        vertexShader: 'varying vec2 vUv; void main(){ vUv = uv; gl_Position = vec4(position * 2., 1.); }'
+      });
+      s2.add(new THREE.Mesh(new THREE.PlaneGeometry(1, 1), m2));
+      function size2(){
+        var b = holder.getBoundingClientRect();
+        r2.setSize(b.width, b.height, false);
+      }
+      size2(); addEventListener('resize', size2);
+      var str = 0, want = 0;
+      holder.addEventListener('pointerenter', function(){ want = 1; });
+      holder.addEventListener('pointerleave', function(){ want = 0; });
+      holder.addEventListener('pointermove', function(e){
+        var b = holder.getBoundingClientRect();
+        u2.u_mouse.value.set((e.clientX - b.left) / b.width, 1 - (e.clientY - b.top) / b.height);
+      });
+      (function tick2(){
+        u2.u_time.value += .016;
+        str += (want - str) * .06;
+        u2.u_str.value = str;
+        r2.render(s2, c2);
+        requestAnimationFrame(tick2);
+      })();
+    });
+  }
+
+  /* ---------- lenis ---------- */
+  var lenis = null;
+  if (window.Lenis && !reduced) {
+    lenis = new Lenis({lerp: .09});
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){
+      a.addEventListener('click', function(e){
+        var t = document.querySelector(a.getAttribute('href'));
+        if (t) { e.preventDefault(); lenis.scrollTo(t, {offset: -60}); }
+      });
+    });
+  }
+
+  /* ---------- gsap ---------- */
+  if (window.gsap && !reduced) {
+    gsap.registerPlugin(ScrollTrigger);
+    if (lenis) {
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add(function(time){ lenis.raf(time * 1000); });
+      gsap.ticker.lagSmoothing(0);
+    }
+
+    /* preloader */
+    var count = {v: 0};
+    var tl = gsap.timeline();
+    tl.to(count, {v: 100, duration: 1.5, ease: 'power2.inOut', onUpdate: function(){
+        document.getElementById('count').textContent = String(Math.round(count.v)).padStart(3, '0');
+      }})
+      .to('#bar', {scaleX: 1, duration: 1.5, ease: 'power2.inOut'}, 0)
+      .to('#loader', {yPercent: -100, duration: .8, ease: 'power4.inOut'}, '+=.15')
+      .set('#loader', {display: 'none'})
+      .to('h1 .row>span', {y: 0, duration: 1.1, stagger: .1, ease: 'power4.out'}, '-=.55')
+      .to('.hero-foot .reveal, .hero-meta', {opacity: 1, y: 0, duration: .9, stagger: .12, ease: 'power3.out'}, '-=.6');
+    gsap.set('.hero-meta', {opacity: 0, y: 20});
+
+    document.querySelectorAll('[data-scramble-once]').forEach(function(el, i){
+      setTimeout(function(){ scramble(el, 700); }, 2400 + i * 180);
+    });
+
+    /* horizontal pillars */
+    ScrollTrigger.matchMedia({
+      '(min-width: 901px)': function(){
+        var track = document.getElementById('track');
+        var dist = track.scrollWidth - innerWidth;
+        gsap.to(track, {
+          x: -dist, ease: 'none',
+          scrollTrigger: {
+            trigger: '#pillars', start: 'top top', end: '+=' + dist,
+            pin: true, scrub: 1, invalidateOnRefresh: true
+          }
+        });
+      }
+    });
+
+    /* reveals */
+    gsap.utils.toArray('section .reveal').forEach(function(el){
+      gsap.to(el, {
+        opacity: 1, y: 0, duration: .9, ease: 'power3.out',
+        scrollTrigger: {trigger: el, start: 'top 88%'}
+      });
+    });
+
+    /* outline marquee scrub */
+    gsap.to('#shout', {
+      xPercent: -25, ease: 'none',
+      scrollTrigger: {trigger: '.shout', start: 'top bottom', end: 'bottom top', scrub: 1}
+    });
+  } else {
+    var l = document.getElementById('loader'); if (l) l.remove();
+    document.querySelectorAll('.reveal, h1 .row>span, .hero-meta').forEach(function(el){
+      el.style.opacity = 1; el.style.transform = 'none';
+    });
+  }
+})();
+</script>
+</body>
+</html>
