@@ -5,23 +5,25 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Performance Specialty Medicine — Dane Mosher, DO</title>
 <meta name="description" content="Root-cause functional medicine in Coeur d'Alene, Idaho. Dr. Dane Mosher, DO — mitochondrial testing, repair, energy, and health optimization.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='42' fill='%23f0a44b'/></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='42' fill='%23c8ff1f'/></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300..800&family=Instrument+Sans:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500&display=swap">
 <style>
   :root{
-    --ground:#070e0c;
-    --surface:#0d1714;
-    --surface-2:#122019;
-    --line:#1e2f27;
-    --ink:#edf4ef;
-    --muted:#8ea79a;
-    --faint:#597064;
-    --ember:#f0a44b;
-    --ember-soft:rgba(240,164,75,.18);
-    --cell:#54cfa8;
-    --cell-soft:rgba(84,207,168,.12);
+    --ground:#050a08;
+    --surface:#0b1511;
+    --surface-2:#102019;
+    --line:#22382c;
+    --ink:#f2fbf4;
+    --muted:#9fbcab;
+    --faint:#5f7c6c;
+    --ember:#c8ff1f;
+    --ember-soft:rgba(200,255,31,.22);
+    --cell:#2ff5d0;
+    --cell-soft:rgba(47,245,208,.16);
+    --pink:#ff3dbe;
+    --pink-soft:rgba(255,61,190,.2);
     --display:'Bricolage Grotesque','Avenir Next','Helvetica Neue',sans-serif;
     --body:'Instrument Sans','Helvetica Neue',Arial,sans-serif;
     --mono:'Spline Sans Mono','SF Mono',Menlo,monospace;
@@ -67,7 +69,7 @@
   @media(pointer:fine){
     .cursor-dot,.cursor-ring{position:fixed;top:0;left:0;z-index:250;pointer-events:none;border-radius:50%;will-change:transform}
     .cursor-dot{width:6px;height:6px;background:var(--ember);margin:-3px 0 0 -3px}
-    .cursor-ring{width:34px;height:34px;border:1px solid rgba(240,164,75,.4);margin:-17px 0 0 -17px;transition:width .25s,height .25s,margin .25s,border-color .25s}
+    .cursor-ring{width:34px;height:34px;border:1px solid rgba(200,255,31,.5);margin:-17px 0 0 -17px;transition:width .25s,height .25s,margin .25s,border-color .25s}
     .cursor-ring.is-hover{width:56px;height:56px;margin:-28px 0 0 -28px;border-color:var(--cell)}
   }
 
@@ -85,9 +87,9 @@
   .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:20px 0}
   .brand{display:flex;align-items:center;gap:12px;color:var(--ink)}
   .brand-mark{width:32px;height:32px;border-radius:50%;flex:none;
-    background:radial-gradient(circle at 35% 35%, var(--ember), #b05f14 60%, #3a2408 100%);
+    background:radial-gradient(circle at 35% 35%, var(--ember), #6f9a00 60%, #16240a 100%);
     box-shadow:0 0 18px var(--ember-soft);animation:pulse 4s ease-in-out infinite}
-  @keyframes pulse{0%,100%{box-shadow:0 0 12px var(--ember-soft)}50%{box-shadow:0 0 26px rgba(240,164,75,.4)}}
+  @keyframes pulse{0%,100%{box-shadow:0 0 12px var(--ember-soft)}50%{box-shadow:0 0 26px rgba(200,255,31,.5)}}
   .brand-name{font-family:var(--display);font-weight:600;font-size:14px;line-height:1.2}
   .brand-name small{display:block;font-family:var(--mono);font-weight:400;font-size:9px;letter-spacing:.2em;color:var(--faint);text-transform:uppercase}
   .nav-links{display:flex;gap:26px;align-items:center}
@@ -114,7 +116,7 @@
   h1 .row{display:block;overflow:hidden}
   h1 .row>span{display:block;transform:translateY(115%)}
   h1 .ghost{
-    color:transparent;-webkit-text-stroke:1.5px rgba(237,244,239,.34);
+    color:transparent;-webkit-text-stroke:1.5px rgba(255,61,190,.75);
   }
   h1 .amber{color:var(--ember)}
   .hero-foot{
@@ -129,7 +131,7 @@
     transition:box-shadow .2s ease;
   }
   .btn-primary{background:var(--ember);color:var(--ground)}
-  .btn-primary:hover{box-shadow:0 6px 40px rgba(240,164,75,.35)}
+  .btn-primary:hover{box-shadow:0 6px 40px rgba(200,255,31,.45)}
   .btn-ghost{border:1px solid var(--line);color:var(--ink)}
   .btn-ghost:hover{border-color:var(--faint)}
 
@@ -190,7 +192,7 @@
   .panel .big{
     position:absolute;top:-10px;right:6px;
     font-family:var(--display);font-weight:700;font-size:clamp(110px,12vw,180px);line-height:1;
-    color:transparent;-webkit-text-stroke:1px rgba(240,164,75,.28);
+    color:transparent;-webkit-text-stroke:1px rgba(255,61,190,.55);
   }
   .panel h3{font-family:var(--display);font-weight:640;font-size:clamp(24px,2.4vw,34px);letter-spacing:-.015em;margin:0 0 14px;text-transform:uppercase}
   .panel p{color:var(--muted);margin:0;font-size:15.5px;max-width:26em}
@@ -231,14 +233,14 @@
   .shout-inner b{
     font-family:var(--display);font-weight:700;text-transform:uppercase;letter-spacing:-.03em;
     font-size:clamp(70px,11vw,170px);line-height:1;padding-right:60px;
-    color:transparent;-webkit-text-stroke:1.5px rgba(237,244,239,.22);
+    color:transparent;-webkit-text-stroke:1.5px rgba(47,245,208,.5);
   }
   .shout-inner b em{font-style:normal;-webkit-text-stroke:0;color:var(--ember)}
 
   /* visit */
   #visit .visit-card{
     border:1px solid var(--line);border-radius:26px;
-    background:radial-gradient(80% 120% at 85% 0%, var(--ember-soft), transparent 55%), rgba(13,23,20,.8);
+    background:radial-gradient(80% 120% at 85% 0%, var(--ember-soft), transparent 55%), radial-gradient(70% 100% at 10% 100%, var(--pink-soft), transparent 55%), rgba(11,21,17,.8);
     backdrop-filter:blur(10px);
     padding:clamp(40px,6vw,80px);
     display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(28px,5vw,70px);align-items:center;
@@ -548,12 +550,13 @@
       '  float sc = u_scroll * .4;',
       '  float n = fbm(p * 2.2 + vec2(t, -t * .6 + sc));',
       '  float n2 = fbm(p * 3.4 - vec2(t * .8, sc * .7) + n);',
-      '  vec3 col = vec3(.027, .055, .047);',
-      '  col = mix(col, vec3(.04, .12, .095), smoothstep(.35, .85, n));',
+      '  vec3 col = vec3(.03, .07, .055);',
+      '  col = mix(col, vec3(.05, .17, .12), smoothstep(.35, .85, n));',
       '  float vein = smoothstep(.48, .5, n2) * smoothstep(.54, .5, n2);',
-      '  col += vec3(.33, .81, .66) * vein * .35;',
+      '  col += vec3(.62, 1., .18) * vein * .75;',
       '  float ember = fbm(p * 1.6 + vec2(-t * 1.4, t + sc));',
-      '  col += vec3(.94, .64, .3) * smoothstep(.72, .98, ember) * .22;',
+      '  col += vec3(1., .22, .72) * smoothstep(.68, .98, ember) * .4;',
+      '  col += vec3(.16, .96, .8) * smoothstep(.8, 1., fbm(p * 2.8 + vec2(t * .5, -sc))) * .3;',
       '  float vig = smoothstep(1.25, .35, distance(uv, vec2(.5, .45)));',
       '  col *= mix(.55, 1., vig);',
       '  gl_FragColor = vec4(col, 1.);',
@@ -617,8 +620,9 @@
         '  float lum = dot(c, vec3(.299, .587, .114));',
         '  lum = pow(lum, 1.06);',
         '  vec3 col = mix(vec3(.03, .06, .05), vec3(.93, .96, .94), lum);',
-        '  col = mix(col, vec3(.07, .25, .2), (1. - smoothstep(.0, .45, lum)) * .55);',
-        '  col += vec3(.94, .64, .3) * smoothstep(.68, 1., lum) * .38;',
+        '  col = mix(col, vec3(.04, .3, .22), (1. - smoothstep(.0, .45, lum)) * .6);',
+        '  col += vec3(1., .22, .72) * smoothstep(.3, .55, lum) * (1. - smoothstep(.55, .8, lum)) * .2;',
+        '  col += vec3(.78, 1., .12) * smoothstep(.66, 1., lum) * .45;',
         '  gl_FragColor = vec4(col, 1.);',
         '}'
       ].join('\n');
