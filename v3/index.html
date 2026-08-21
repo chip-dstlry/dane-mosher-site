@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Performance Specialty Medicine — Dane Mosher, DO</title>
+<meta name="description" content="Root-cause functional medicine in Coeur d'Alene, Idaho. Dr. Dane Mosher, DO — mitochondrial testing, environmental medicine, and health optimization.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cg stroke='%23B23A28' stroke-width='3' stroke-linecap='round' fill='none'%3E%3Cpath d='M16 4v24M6 10l20 12M26 10L6 22'/%3E%3Ccircle cx='16' cy='16' r='2.4' fill='%23B23A28' stroke='none'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,400;0,500;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F6F1E7;
+  --plate:#FFFDF8;
+  --ink:#26221B;
+  --muted:#77705F;
+  --artery:#B23A28;
+  --vein:#2E566B;
+  --sage:#8A9484;
+  --hair:rgba(38,34,27,.25);
+  --numeral:rgba(38,34,27,.08);
+  --serif:'Newsreader',Georgia,'Times New Roman',serif;
+  --sans:'Alegreya Sans','Gill Sans',Verdana,sans-serif;
+  --mono:'IBM Plex Mono','Courier New',monospace;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:17px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+@media (min-width:900px){body{font-size:18px}}
+img{max-width:100%;display:block}
+a{color:inherit}
+
+/* ---------- utility type roles ---------- */
+.mono{
+  font-family:var(--mono);
+  font-size:12px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  font-weight:400;
+}
+.mono-sm{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase}
+.label-muted{color:var(--muted)}
+
+/* ---------- page scaffold ---------- */
+.page{position:relative;min-height:100vh}
+.margin-rule{
+  position:absolute;top:0;bottom:0;left:28px;width:1px;
+  background:var(--hair);pointer-events:none;z-index:2;
+}
+.wrap{
+  max-width:1200px;margin:0 auto;
+  padding-left:clamp(52px,7vw,84px);
+  padding-right:clamp(20px,4vw,48px);
+}
+section{position:relative}
+.secnum{
+  position:absolute;top:2.6rem;left:28px;transform:translateX(-50%);
+  font-family:var(--mono);font-size:11px;letter-spacing:.08em;
+  color:var(--artery);background:var(--paper);padding:6px 0;z-index:3;
+}
+.about-band .secnum{background:transparent}
+
+/* ---------- rules ---------- */
+.rule{height:1px;background:var(--hair);transform-origin:left center;transform:scaleX(0);transition:transform 700ms ease-out}
+.in .rule,.rule.in{transform:scaleX(1)}
+.double-rule{
+  height:5px;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);
+  transform-origin:left center;transform:scaleX(0);transition:transform 700ms ease-out;
+}
+.in .double-rule{transform:scaleX(1)}
+
+/* ---------- reveal pattern ---------- */
+.rv{opacity:0;transform:translateY(12px);transition:opacity 500ms ease-out,transform 500ms ease-out}
+.in .rv{opacity:1;transform:none}
+
+/* ---------- links ---------- */
+p a,.textlink{
+  color:var(--ink);text-decoration:none;
+  background-image:linear-gradient(var(--artery),var(--artery));
+  background-repeat:no-repeat;background-position:0 100%;background-size:0% 1px;
+  transition:background-size 250ms ease-out,color 200ms ease-out;
+}
+p a:hover,.textlink:hover{background-size:100% 1px;color:var(--vein)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--artery);outline-offset:3px;border-radius:1px}
+.skip{
+  position:absolute;left:-9999px;top:0;z-index:50;
+  background:var(--ink);color:var(--paper);padding:.6rem 1rem;
+  font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;
+}
+.skip:focus{left:8px;top:8px}
+
+/* ---------- masthead ---------- */
+.masthead{padding-top:1.6rem}
+.mast-grid{
+  display:flex;align-items:baseline;justify-content:space-between;gap:1.2rem 2rem;
+  flex-wrap:wrap;padding-bottom:1.2rem;
+}
+.nav{display:flex;gap:1.6rem;flex-wrap:wrap}
+.nav a{
+  position:relative;color:var(--ink);text-decoration:none;
+  font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+  padding-left:12px;
+}
+.nav a::before{
+  content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);
+  width:5px;height:5px;border-radius:50%;background:var(--artery);
+  opacity:0;transition:opacity 200ms ease-out;
+}
+.nav a:hover::before,.nav a:focus-visible::before{opacity:1}
+.wordmark{
+  font-family:var(--serif);font-weight:500;font-size:clamp(1.05rem,2.4vw,1.35rem);
+  font-optical-sizing:auto;letter-spacing:.005em;white-space:nowrap;
+}
+.mast-phone{white-space:nowrap}
+.mast-phone a{color:var(--ink);text-decoration:none}
+.mast-phone a:hover{color:var(--artery)}
+@media (max-width:700px){
+  .mast-grid{flex-direction:column;align-items:flex-start;gap:.9rem}
+  .wordmark{order:-1}
+}
+
+/* ---------- hero ---------- */
+.hero{padding:clamp(3rem,7vw,5.5rem) 0 clamp(3rem,6vw,5rem)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(2rem,5vw,4.5rem);align-items:start}
+h1{
+  font-family:var(--serif);font-weight:500;font-optical-sizing:auto;
+  font-size:clamp(2.8rem,7vw,5.5rem);line-height:1.05;letter-spacing:-.01em;
+  max-width:14ch;
+}
+.hero-kicker{color:var(--muted);margin-bottom:1.1rem}
+.hero-sub{
+  font-family:var(--serif);font-style:italic;font-weight:400;
+  font-size:clamp(1.15rem,2.2vw,1.45rem);line-height:1.4;color:var(--vein);
+  margin-top:1.4rem;max-width:34ch;
+}
+.hero p.lede{margin-top:1.5rem;max-width:56ch}
+.cta{
+  display:inline-block;margin-top:2.2rem;
+  background:var(--artery);color:var(--paper);text-decoration:none;
+  font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;
+  padding:1rem 1.9rem;transition:background-color 200ms ease-out;
+}
+.cta:hover,.cta:focus-visible{background:var(--vein)}
+.figure{margin:0}
+.mat{background:var(--plate);border:1px solid var(--ink);padding:14px}
+.mat img{width:100%;height:auto;aspect-ratio:1050/1400;object-fit:cover}
+.figcap{
+  font-family:var(--serif);font-style:italic;font-size:.95rem;line-height:1.5;
+  color:var(--ink);margin-top:.8rem;max-width:40ch;
+}
+.figcap .fno{font-style:normal;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--artery);margin-right:.4em}
+@media (max-width:820px){
+  .hero-grid{grid-template-columns:1fr}
+  .figure{max-width:420px}
+}
+
+/* ---------- plates ---------- */
+.pillars{padding:clamp(2.5rem,5vw,4rem) 0 clamp(2.5rem,5vw,4rem)}
+.section-head{margin-bottom:.4rem}
+.section-head .kicker{color:var(--muted);display:block;margin-bottom:.7rem}
+.section-head h2{
+  font-family:var(--serif);font-weight:500;font-size:clamp(1.7rem,3.4vw,2.4rem);line-height:1.15;
+}
+.section-head .rule{margin-top:1.6rem}
+.plate{
+  display:grid;
+  grid-template-columns:clamp(70px,10vw,130px) minmax(0,1fr) clamp(160px,20vw,220px);
+  gap:1.2rem clamp(1.4rem,3.5vw,3rem);
+  padding:clamp(2.2rem,4.5vw,3.4rem) 0;
+  align-items:center;
+}
+.plate-label{grid-column:1/-1;color:var(--muted)}
+.plate-label .plate-no{color:var(--artery)}
+.plate-numeral{
+  font-family:var(--serif);font-weight:400;line-height:.8;
+  font-size:clamp(4.5rem,10vw,9.5rem);color:var(--numeral);
+  -webkit-user-select:none;user-select:none;align-self:start;
+}
+.plate-body h3{
+  font-family:var(--serif);font-weight:500;font-size:clamp(1.35rem,2.4vw,1.8rem);line-height:1.2;margin-bottom:.7rem;
+}
+.plate-body p{max-width:52ch}
+.plate-fig{justify-self:end;width:100%;max-width:220px}
+.plate-fig svg{width:100%;height:auto;display:block}
+.plate-fig .figcap{font-size:.85rem;margin-top:.5rem}
+@media (max-width:820px){
+  .plate{grid-template-columns:minmax(0,1fr)}
+  .plate-numeral{font-size:4rem;line-height:1}
+  .plate-fig{justify-self:start;max-width:190px}
+}
+
+/* diagram strokes */
+.diagram path,.diagram circle,.diagram line,.diagram polyline{
+  fill:none;stroke:var(--vein);stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;
+  vector-effect:non-scaling-stroke;
+}
+.diagram .hi{stroke:var(--artery)}
+.diagram .fill-hi{fill:var(--artery);stroke:none}
+.diagram .draw{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1s ease-out .25s}
+.in .diagram .draw{stroke-dashoffset:0}
+
+/* ---------- modalities ---------- */
+.modalities{padding:clamp(2.5rem,5vw,4.5rem) 0}
+.mod-grid{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:0 clamp(2rem,5vw,4.5rem);margin-top:2.2rem;
+}
+.mod-item{padding:1.15rem 0;border-bottom:1px dotted var(--hair)}
+.mod-top{display:flex;align-items:baseline;gap:.9rem}
+.mod-no{font-family:var(--mono);font-size:12px;letter-spacing:.08em;color:var(--artery);min-width:2.4em}
+.mod-name{font-weight:500;font-size:1.05rem;white-space:nowrap}
+.mod-leader{flex:1;border-bottom:1px dotted var(--muted);transform:translateY(-5px);min-width:1.5rem}
+.mod-desc{margin-top:.35rem;padding-left:calc(2.4em + .9rem);font-size:.95rem;color:var(--ink);max-width:44ch}
+@media (max-width:760px){
+  .mod-grid{grid-template-columns:1fr}
+  .mod-name{white-space:normal}
+}
+
+/* ---------- about ---------- */
+.about-band{background:rgba(138,148,132,.18);margin-top:clamp(2rem,4vw,3.5rem)}
+.about{padding:clamp(3rem,6vw,5rem) 0}
+.about-grid{
+  display:grid;grid-template-columns:minmax(190px,240px) minmax(0,62ch);
+  gap:2rem clamp(2rem,5vw,4rem);margin-top:2.2rem;
+}
+.timeline{list-style:none}
+.timeline li{
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;
+  line-height:1.7;color:var(--ink);
+  padding:.85rem 0;border-bottom:1px solid var(--hair);
+}
+.timeline li:first-child{border-top:1px solid var(--hair)}
+.timeline .yr{color:var(--artery);display:block;margin-bottom:.15rem}
+.timeline .bk{font-family:var(--serif);font-style:italic;text-transform:none;letter-spacing:0;font-size:.9rem}
+.about-prose p{max-width:62ch}
+.about-prose p + p{margin-top:1.2rem}
+.pullquote{
+  position:relative;margin-top:clamp(2.5rem,5vw,3.6rem);padding-left:clamp(2.6rem,5vw,3.6rem);
+  font-family:var(--serif);font-style:italic;font-weight:400;
+  font-size:clamp(1.6rem,3.6vw,2.5rem);line-height:1.25;max-width:24ch;
+}
+.pullquote::before{
+  content:"\201C";position:absolute;left:0;top:-.18em;
+  font-family:var(--serif);font-style:normal;font-size:2.6em;line-height:1;color:var(--vein);
+}
+.pullquote cite{
+  display:block;margin-top:1.2rem;font-style:normal;
+  font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);
+}
+@media (max-width:760px){
+  .about-grid{grid-template-columns:1fr}
+  .timeline{order:2}
+}
+
+/* ---------- visit ---------- */
+.visit{padding:clamp(3rem,6vw,5rem) 0 clamp(3.5rem,6vw,5.5rem)}
+.specimen{
+  background:var(--plate);border:1px solid var(--hair);
+  padding:clamp(1.6rem,4vw,2.8rem);margin-top:2.2rem;
+  display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2rem;align-items:center;
+  max-width:760px;
+}
+.specimen-inner{border:1px solid var(--hair);position:absolute;inset:7px;pointer-events:none}
+.specimen{position:relative}
+.spec-lines{font-family:var(--mono);font-size:13px;letter-spacing:.08em;text-transform:uppercase;line-height:2.1}
+.spec-lines a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--hair);transition:color 200ms ease-out,border-color 200ms ease-out}
+.spec-lines a:hover{color:var(--artery);border-color:var(--artery)}
+.spec-lines .spec-k{color:var(--muted);font-size:11px;display:block;line-height:1.6;margin-bottom:.3rem}
+.compass{width:clamp(74px,10vw,96px);height:auto}
+.visit .cta{margin-top:2rem}
+@media (max-width:640px){
+  .specimen{grid-template-columns:1fr}
+  .compass{justify-self:start}
+}
+
+/* ---------- footer ---------- */
+footer{padding:0 0 2.6rem}
+.foot-grid{
+  display:flex;justify-content:space-between;gap:.8rem 2rem;flex-wrap:wrap;
+  padding-top:1.4rem;color:var(--muted);
+}
+.foot-grid a{color:var(--ink);text-decoration:none}
+.foot-grid a:hover{color:var(--artery)}
+
+/* ---------- paper grain ---------- */
+.grain{
+  position:fixed;inset:0;z-index:40;pointer-events:none;opacity:.025;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:240px 240px;
+}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto}
+  .rv{transform:none;transition:opacity 300ms linear}
+  .rule,.double-rule{transform:scaleX(1);transition:none}
+  .diagram .draw{stroke-dashoffset:0 !important;transition:none}
+  .cta,.nav a::before,p a,.textlink,.spec-lines a{transition:none}
+}
+@media (max-width:420px){
+  .margin-rule{left:18px}
+  .secnum{left:18px}
+  .wrap{padding-left:40px;padding-right:18px}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="page">
+  <div class="margin-rule" aria-hidden="true"></div>
+
+  <!-- 1 · MASTHEAD -->
+  <header class="masthead" data-rvg>
+    <div class="wrap">
+      <div class="mast-grid">
+        <nav class="nav rv" aria-label="Primary">
+          <a href="#pillars">Pillars</a>
+          <a href="#modalities">Modalities</a>
+          <a href="#about">About</a>
+          <a href="#visit">Visit</a>
+        </nav>
+        <div class="wordmark rv">Performance Specialty Medicine</div>
+        <div class="mast-phone mono rv"><a href="tel:+12082541986">+1&nbsp;208&nbsp;254&nbsp;1986</a></div>
+      </div>
+      <div class="rule"></div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- 2 · HERO -->
+    <section class="hero" aria-labelledby="hero-h" data-rvg>
+      <span class="secnum" aria-hidden="true">01</span>
+      <div class="wrap">
+        <div class="hero-grid">
+          <div>
+            <p class="mono hero-kicker rv">Coeur d'Alene, Idaho · Est. practice of Dane Mosher, DO</p>
+            <h1 id="hero-h" class="rv">Root-cause medicine, practiced like a science.</h1>
+            <p class="hero-sub rv">Measured at the cell. Repaired at the source. Proven over time.</p>
+            <p class="lede rv">Most medicine manages symptoms. Dr.&nbsp;Dane Mosher, DO works upstream — measuring how your cells produce energy, finding what interferes, and repairing the system at its root.</p>
+            <a class="cta rv" href="tel:+12082541986">Request a visit</a>
+          </div>
+          <figure class="figure rv">
+            <div class="mat">
+              <img src="../assets/dane-2.jpg" width="1050" height="1400" alt="Portrait of Dr. Dane Mosher, DO, certified functional medicine practitioner">
+            </div>
+            <figcaption class="figcap"><span class="fno">Fig.&nbsp;1</span>— Dane Mosher, DO. Certified functional medicine practitioner, IFM&nbsp;2015.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3 · FOUR PILLARS -->
+    <section class="pillars" id="pillars" aria-labelledby="pillars-h">
+      <span class="secnum" aria-hidden="true">02</span>
+      <div class="wrap">
+        <div class="section-head" data-rvg>
+          <span class="kicker mono rv">Atlas of practice · Plates I–IV</span>
+          <h2 id="pillars-h" class="rv">Four pillars, in order of operation.</h2>
+          <div class="rule"></div>
+        </div>
+
+        <article class="plate" data-rvg>
+          <p class="plate-label mono rv"><span class="plate-no">Plate I</span> — Energy</p>
+          <div class="plate-numeral rv" aria-hidden="true">I</div>
+          <div class="plate-body rv">
+            <h3>Energy</h3>
+            <p>Fatigue isn't a personality trait — it's a cellular signal. We look at how your mitochondria produce energy, and what's draining the battery.</p>
+          </div>
+          <figure class="plate-fig rv">
+            <svg class="diagram" viewBox="0 0 200 140" role="img" aria-label="Hand-drawn cross-section of a mitochondrion showing folded inner cristae, one highlighted in red">
+              <path class="draw" pathLength="1" d="M18,70 C16,38 52,16 100,15 C150,14 184,36 183,68 C184,102 150,126 100,126 C50,127 20,104 18,70 Z"/>
+              <path class="draw" pathLength="1" d="M30,70 C29,45 58,27 100,26 C144,25 172,44 171,69 C172,96 143,115 100,115 C57,116 31,97 30,70 Z"/>
+              <path class="draw" pathLength="1" d="M46,34 C58,52 56,88 45,106"/>
+              <path class="draw" pathLength="1" d="M74,27 C88,50 87,92 73,114"/>
+              <path class="draw hi" pathLength="1" d="M104,26 C120,50 119,92 103,115"/>
+              <path class="draw" pathLength="1" d="M134,30 C148,50 147,90 133,111"/>
+              <path class="draw" pathLength="1" d="M158,42 C167,55 166,84 157,98"/>
+            </svg>
+            <figcaption class="figcap"><span class="fno">Fig.&nbsp;2</span>— Mitochondrion, section.</figcaption>
+          </figure>
+        </article>
+
+        <div class="double-rule" data-rvg></div>
+
+        <article class="plate" data-rvg>
+          <p class="plate-label mono rv"><span class="plate-no">Plate II</span> — Mitochondrial Testing</p>
+          <div class="plate-numeral rv" aria-hidden="true">II</div>
+          <div class="plate-body rv">
+            <h3>Mitochondrial testing</h3>
+            <p>Objective measurement of cellular energy production, so treatment targets what the data shows — not a guess.</p>
+          </div>
+          <figure class="plate-fig rv">
+            <svg class="diagram" viewBox="0 0 200 140" role="img" aria-label="Hand-drawn line chart of measurements rising over time, latest data point highlighted in red">
+              <path class="draw" pathLength="1" d="M28,16 L27,118 L184,119"/>
+              <path class="draw" pathLength="1" d="M27,96 L32,96 M27,72 L32,72 M27,48 L32,48"/>
+              <path class="draw" pathLength="1" d="M64,119 L64,114 M104,119 L104,114 M144,119 L144,114"/>
+              <path class="draw" pathLength="1" d="M38,102 C52,100 58,92 70,90 C84,88 90,74 106,70 C120,66 128,52 142,46 C154,41 160,34 170,30"/>
+              <circle class="draw" pathLength="1" cx="38" cy="102" r="3.5"/>
+              <circle class="draw" pathLength="1" cx="70" cy="90" r="3.5"/>
+              <circle class="draw" pathLength="1" cx="106" cy="70" r="3.5"/>
+              <circle class="draw" pathLength="1" cx="142" cy="46" r="3.5"/>
+              <circle class="draw hi" pathLength="1" cx="170" cy="30" r="4.5"/>
+            </svg>
+            <figcaption class="figcap"><span class="fno">Fig.&nbsp;3</span>— Function, measured over time.</figcaption>
+          </figure>
+        </article>
+
+        <div class="double-rule" data-rvg></div>
+
+        <article class="plate" data-rvg>
+          <p class="plate-label mono rv"><span class="plate-no">Plate III</span> — Repair</p>
+          <div class="plate-numeral rv" aria-hidden="true">III</div>
+          <div class="plate-body rv">
+            <h3>Repair</h3>
+            <p>Removing what interferes — toxins, hidden stressors, immune triggers — and giving the body what it needs to rebuild itself.</p>
+          </div>
+          <figure class="plate-fig rv">
+            <svg class="diagram" viewBox="0 0 200 140" role="img" aria-label="Hand-drawn leaf with branching venation, one vein highlighted in red">
+              <path class="draw" pathLength="1" d="M100,132 C58,110 40,80 44,48 C48,22 74,8 100,7 C126,8 152,22 156,48 C160,80 142,110 100,132 Z"/>
+              <path class="draw" pathLength="1" d="M100,130 C100,92 100,50 100,10"/>
+              <path class="draw" pathLength="1" d="M100,104 C82,98 66,88 56,74"/>
+              <path class="draw" pathLength="1" d="M100,104 C118,98 134,88 144,74"/>
+              <path class="draw hi" pathLength="1" d="M100,78 C84,72 70,62 62,48"/>
+              <path class="draw" pathLength="1" d="M100,78 C116,72 130,62 138,48"/>
+              <path class="draw" pathLength="1" d="M100,52 C90,46 82,38 78,28"/>
+              <path class="draw" pathLength="1" d="M100,52 C110,46 118,38 122,28"/>
+            </svg>
+            <figcaption class="figcap"><span class="fno">Fig.&nbsp;4</span>— Venation; the body rebuilds.</figcaption>
+          </figure>
+        </article>
+
+        <div class="double-rule" data-rvg></div>
+
+        <article class="plate" data-rvg>
+          <p class="plate-label mono rv"><span class="plate-no">Plate IV</span> — Health Optimization</p>
+          <div class="plate-numeral rv" aria-hidden="true">IV</div>
+          <div class="plate-body rv">
+            <h3>Health optimization</h3>
+            <p>&ldquo;Normal labs&rdquo; is a low bar. The goal is function: better energy, sharper cognition, deeper resilience — measurably, over time.</p>
+          </div>
+          <figure class="plate-fig rv">
+            <svg class="diagram" viewBox="0 0 200 140" role="img" aria-label="Hand-drawn sun-path arc over a horizon, the sun highlighted in red">
+              <path class="draw" pathLength="1" d="M14,112 L186,112"/>
+              <path class="draw" pathLength="1" d="M34,112 C38,58 74,24 100,23 C126,24 162,58 166,112"/>
+              <path class="draw" pathLength="1" d="M34,112 L34,106 M166,112 L166,106 M100,23 L100,17"/>
+              <circle class="draw hi" pathLength="1" cx="132" cy="42" r="9"/>
+              <path class="draw hi" pathLength="1" d="M132,26 L132,21 M148,48 L153,50 M144,30 L148,26 M118,32 L114,28"/>
+              <path class="draw" pathLength="1" d="M54,112 L60,104 M146,112 L140,104"/>
+            </svg>
+            <figcaption class="figcap"><span class="fno">Fig.&nbsp;5</span>— Sun path; rhythm as a tool.</figcaption>
+          </figure>
+        </article>
+      </div>
+    </section>
+
+    <!-- 4 · MODALITIES -->
+    <section class="modalities" id="modalities" aria-labelledby="mod-h">
+      <span class="secnum" aria-hidden="true">03</span>
+      <div class="wrap">
+        <div class="section-head" data-rvg>
+          <span class="kicker mono rv">Index of modalities · I–VIII</span>
+          <h2 id="mod-h" class="rv">The toolkit, catalogued.</h2>
+          <div class="rule"></div>
+        </div>
+        <ol class="mod-grid" data-rvg>
+          <li class="mod-item rv">
+            <div class="mod-top"><span class="mod-no">I</span><span class="mod-name">Functional medicine</span><span class="mod-leader" aria-hidden="true"></span></div>
+            <p class="mod-desc">IFM-certified, root-cause framework since 2015.</p>
+          </li>
+          <li class="mod-item rv">
+            <div class="mod-top"><span class="mod-no">II</span><span class="mod-name">Environmental medicine</span><span class="mod-leader" aria-hidden="true"></span></div>
+            <p class="mod-desc">Effects of toxins and environmental exposures.</p>
+          </li>
+          <li class="mod-item rv">
+            <div class="mod-top"><span class="mod-no">III</span><span class="mod-name">Immunotherapy</span><span class="mod-leader" aria-hidden="true"></span></div>
+            <p class="mod-desc">Allergies and autoimmune conditions.</p>
+          </li>
+          <li class="mod-item rv">
+            <div class="mod-top"><span class="mod-no">IV</span><span class="mod-name">Medical ozone therapies</span><span class="mod-leader" aria-hidden="true"></span></div>
+            <p class="mod-desc">Oxidative support for repair and immune function.</p>
+          </li>
+          <li class="mod-item rv">
+            <div class="mod-top"><span class="mod-no">V</span><span class="mod-name">Hormone &amp; immune balance</span><span class="mod-leader" aria-hidden="true"></span></div>
+            <p class="mod-desc">Imbalances and dysfunction at their source.</p>
+          </li>
+          <li class="mod-item rv">
+            <div class="mod-top"><span class="mod-no">VI</span><span class="mod-name">Light &amp; circadian optimization</span><span class="mod-leader" aria-hidden="true"></span></div>
+            <p class="mod-desc">Light exposure and rhythm as clinical tools.</p>
+          </li>
+          <li class="mod-item rv">
+            <div class="mod-top"><span class="mod-no">VII</span><span class="mod-name">Hair tissue mineral analysis</span><span class="mod-leader" aria-hidden="true"></span></div>
+            <p class="mod-desc">Mineral status and heavy-metal burden over time.</p>
+          </li>
+          <li class="mod-item rv">
+            <div class="mod-top"><span class="mod-no">VIII</span><span class="mod-name">Autism spectrum care</span><span class="mod-leader" aria-hidden="true"></span></div>
+            <p class="mod-desc">Since 2011 through The Johnson Center, Austin,&nbsp;TX.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 5 · ABOUT -->
+    <div class="about-band">
+      <section class="about" id="about" aria-labelledby="about-h">
+        <span class="secnum" aria-hidden="true">04</span>
+        <div class="wrap">
+          <div class="section-head" data-rvg>
+            <span class="kicker mono rv">Biographical notes</span>
+            <h2 id="about-h" class="rv">A conviction, held since age fifteen.</h2>
+            <div class="rule"></div>
+          </div>
+          <div class="about-grid" data-rvg>
+            <ul class="timeline" aria-label="Career timeline">
+              <li class="rv"><span class="yr">Age 15</span><span class="bk">Life Extension</span> — Durk Pearson &amp; Sandy Shaw</li>
+              <li class="rv"><span class="yr">Residency</span>East Tennessee State University, Family Medicine</li>
+              <li class="rv"><span class="yr">2011</span>The Johnson Center, Austin,&nbsp;TX</li>
+              <li class="rv"><span class="yr">2015</span>IFM certification, functional medicine</li>
+              <li class="rv"><span class="yr">2017—</span>Board, American Academy of Environmental Medicine</li>
+            </ul>
+            <div class="about-prose">
+              <p class="rv">At fifteen, Dane Mosher read <em>Life Extension</em> by Durk Pearson and Sandy Shaw and came away with a conviction he has never let go: health is not a mystery to be endured but a system that can be measured, understood, and engineered.</p>
+              <p class="rv">That conviction carried through Family Medicine residency at East Tennessee State University, through certification with The Institute for Functional Medicine in 2015, and onto the board of the American Academy of Environmental Medicine, where he has served since 2017.</p>
+              <p class="rv">Since 2011 he has served the autism community through The Johnson Center in Austin, Texas — working with families where conventional approaches had run out of answers, and where careful measurement and root-cause repair still had plenty to offer.</p>
+              <blockquote class="pullquote rv">
+                I aim to be the physician I would choose for myself.
+                <cite>— Dane Mosher, DO</cite>
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- 6 · VISIT -->
+    <section class="visit" id="visit" aria-labelledby="visit-h">
+      <span class="secnum" aria-hidden="true">05</span>
+      <div class="wrap">
+        <div class="section-head" data-rvg>
+          <span class="kicker mono rv">Specimen label · Location</span>
+          <h2 id="visit-h" class="rv">Visit the practice.</h2>
+          <div class="rule"></div>
+        </div>
+        <div data-rvg>
+          <div class="specimen rv">
+            <div class="specimen-inner" aria-hidden="true"></div>
+            <div class="spec-lines">
+              <span class="spec-k">Performance Specialty Medicine</span>
+              Inside The Collective<br>
+              <a href="https://www.google.com/maps/search/?api=1&amp;query=2238+N+Government+Way%2C+Coeur+d%27Alene%2C+ID+83814" target="_blank" rel="noopener">2238 N Government Way<br>Coeur d'Alene, Idaho 83814</a><br>
+              <a href="tel:+12082541986">+1 208 254 1986</a>
+            </div>
+            <svg class="compass diagram" viewBox="0 0 96 96" role="img" aria-label="Compass rose">
+              <circle class="draw" pathLength="1" cx="48" cy="48" r="34"/>
+              <circle class="draw" pathLength="1" cx="48" cy="48" r="26"/>
+              <path class="draw" pathLength="1" d="M48 8v12M48 76v12M8 48h12M76 48h12"/>
+              <path class="draw" pathLength="1" d="M27 27l8 8M69 69l-8-8M69 27l-8 8M27 69l8-8"/>
+              <path class="draw hi" pathLength="1" d="M48 26 L54 48 L48 70 L42 48 Z"/>
+              <circle class="fill-hi" cx="48" cy="48" r="2.6"/>
+            </svg>
+          </div>
+          <a class="cta rv" href="tel:+12082541986">Request a visit</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- 7 · FOOTER -->
+  <footer data-rvg>
+    <div class="wrap">
+      <div class="rule"></div>
+      <div class="foot-grid mono-sm rv">
+        <span>Set in Newsreader &amp; Alegreya Sans · Coeur d'Alene, Idaho</span>
+        <a href="tel:+12082541986">+1 208 254 1986</a>
+        <span>© 2026 Performance Specialty Medicine</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="grain" aria-hidden="true"></div>
+</div>
+
+<script>
+(function(){
+  var groups = document.querySelectorAll('[data-rvg]');
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  groups.forEach(function(g){
+    if(!reduced){
+      var kids = g.querySelectorAll('.rv');
+      kids.forEach(function(el,i){ el.style.transitionDelay = (i*60)+'ms'; });
+    }
+  });
+
+  if(!('IntersectionObserver' in window)){
+    groups.forEach(function(g){ g.classList.add('in'); });
+    return;
+  }
+
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('in');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  groups.forEach(function(g){ io.observe(g); });
+})();
+</script>
+</body>
+</html>
