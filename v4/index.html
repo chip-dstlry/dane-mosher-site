@@ -70,8 +70,11 @@
   h1{
     font-family:var(--disp);font-weight:400;
     font-size:clamp(46px,8.4vw,116px);
-    line-height:1.04;letter-spacing:.015em;margin:0 0 30px;max-width:11em;
+    line-height:1.04;letter-spacing:.015em;margin:0 auto 30px;max-width:11em;
+    min-height:2.15em;
+    transition:opacity 1.1s ease,transform 1.1s ease;
   }
+  h1.swap{opacity:0;transform:translateY(14px)}
   h1 .shimmer{
     background:linear-gradient(100deg,var(--lav),var(--gold) 30%,var(--rose) 55%,var(--teal) 80%,var(--lav));
     background-size:300% 100%;
@@ -219,7 +222,7 @@
 <header id="top">
   <div class="wrap">
     <p class="om">Performance Specialty Medicine · Coeur d'Alene, Idaho</p>
-    <h1>Return to the <span class="shimmer">energy</span> you were born with.</h1>
+    <h1 id="slogan">Return to the <span class="shimmer">energy</span> you were born with.</h1>
     <p class="hero-sub rv">Most medicine manages symptoms. <strong>Dr. Dane Mosher, DO</strong> works at the source — measuring how your cells create energy, clearing what dims it, and letting the body remember how to heal.</p>
     <div class="rv">
       <a class="btn" href="tel:+12082541986">Begin the journey</a>
@@ -405,6 +408,32 @@
     })();
   } else if (canvas){
     canvas.style.background='radial-gradient(120% 100% at 30% 20%,#2a2354 0%,#0b0a1a 55%),radial-gradient(80% 80% at 80% 80%,#1c3b3a 0%,transparent 60%)';
+  }
+
+  /* ---------- slogan rotation ---------- */
+  var slogans = [
+    'Return to the <span class="shimmer">energy</span> you were born with.',
+    'Your body <span class="shimmer">remembers</span> how to heal.',
+    'Health is a <span class="shimmer">frequency</span>. Tune it.',
+    'The root is where the <span class="shimmer">light</span> comes back.',
+    'Fatigue is a <span class="shimmer">signal</span>, not a sentence.',
+    'Medicine that <span class="shimmer">listens</span> all the way down.',
+    'Clear the noise. The <span class="shimmer">cell</span> knows the way.',
+    'Begin where the symptoms <span class="shimmer">began</span>.',
+    'Energy is not a luxury. It’s your <span class="shimmer">baseline</span>.',
+    'Drift out of survival. Into <span class="shimmer">function</span>.'
+  ];
+  var h1 = document.getElementById('slogan');
+  if (h1 && !reduced){
+    var si = 0;
+    setInterval(function(){
+      h1.classList.add('swap');
+      setTimeout(function(){
+        si = (si + 1) % slogans.length;
+        h1.innerHTML = slogans[si];
+        h1.classList.remove('swap');
+      }, 1150);
+    }, 8000);
   }
 
   /* ---------- lenis + reveals ---------- */
