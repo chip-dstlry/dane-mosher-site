@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Performance Specialty Medicine — Dane Mosher, DO</title>
+<meta name="description" content="Root-cause functional medicine in Coeur d'Alene, Idaho. Dr. Dane Mosher, DO — mitochondrial testing, repair, energy, and health optimization.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='40' fill='none' stroke='%23c9b8ff' stroke-width='6'/><circle cx='50' cy='50' r='14' fill='%23ffd9a0'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:ital,wght@0,300;0,400;0,500;1,300&display=swap">
+<style>
+  :root{
+    --void:#0b0a1a;
+    --ink:#f2eefe;
+    --muted:#b9aed6;
+    --faint:#7d739e;
+    --glass:rgba(18,15,40,.42);
+    --glass-line:rgba(201,184,255,.18);
+    --lav:#c9b8ff;
+    --gold:#ffd9a0;
+    --teal:#8fe8d0;
+    --rose:#ffb8d9;
+    --disp:'Italiana',Georgia,serif;
+    --body:'Jost','Avenir Next','Helvetica Neue',sans-serif;
+  }
+  *{box-sizing:border-box}
+  html.lenis,html.lenis body{height:auto}
+  .lenis.lenis-smooth{scroll-behavior:auto!important}
+  body{
+    background:var(--void);color:var(--ink);
+    font-family:var(--body);font-weight:300;font-size:17.5px;line-height:1.75;
+    -webkit-font-smoothing:antialiased;margin:0;overflow-x:hidden;
+  }
+  ::selection{background:var(--lav);color:var(--void)}
+  a{color:var(--gold);text-decoration:none}
+  a:focus-visible{outline:2px solid var(--lav);outline-offset:4px;border-radius:4px}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 clamp(22px,4vw,52px)}
+
+  /* ---------- dream shader ---------- */
+  #dream{position:fixed;inset:0;width:100%;height:100%;z-index:0}
+  .veil{position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(120% 90% at 50% 50%, transparent 40%, rgba(11,10,26,.55) 100%)}
+
+  /* ---------- nav ---------- */
+  nav{position:fixed;top:0;left:0;right:0;z-index:60}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 0}
+  .brand{font-family:var(--disp);font-size:21px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink)}
+  .brand span{color:var(--gold)}
+  .nav-links{display:flex;gap:30px;align-items:center;font-size:13px;letter-spacing:.22em;text-transform:uppercase;font-weight:400}
+  .nav-links a{color:var(--muted);transition:color .4s}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-tel{border:1px solid var(--glass-line);border-radius:999px;padding:10px 20px;color:var(--ink)!important;background:var(--glass);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:border-color .4s,box-shadow .4s}
+  .nav-tel:hover{border-color:var(--lav);box-shadow:0 0 30px rgba(201,184,255,.25)}
+  @media(max-width:860px){.nav-links a:not(.nav-tel){display:none}}
+  @media(max-width:600px){
+    .nav-inner{gap:10px;padding:16px 0}
+    .brand{font-size:16px;letter-spacing:.08em;white-space:nowrap}
+    .nav-tel{padding:8px 14px;font-size:12px;white-space:nowrap}
+  }
+
+  /* ---------- hero ---------- */
+  main{position:relative;z-index:2}
+  header{min-height:100svh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 0 80px;position:relative}
+  header .wrap{text-shadow:0 2px 30px rgba(11,10,26,.85),0 0 60px rgba(11,10,26,.6)}
+  header .btn{text-shadow:none}
+  .om{
+    font-size:12px;letter-spacing:.55em;text-transform:uppercase;color:var(--muted);
+    margin:0 0 34px;font-weight:400;padding-left:.55em;
+  }
+  h1{
+    font-family:var(--disp);font-weight:400;
+    font-size:clamp(46px,8.4vw,116px);
+    line-height:1.04;letter-spacing:.015em;margin:0 0 30px;max-width:11em;
+  }
+  h1 .shimmer{
+    background:linear-gradient(100deg,var(--lav),var(--gold) 30%,var(--rose) 55%,var(--teal) 80%,var(--lav));
+    background-size:300% 100%;
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    animation:shimmer 14s linear infinite;
+  }
+  @keyframes shimmer{to{background-position:300% 0}}
+  .hero-sub{max-width:36em;color:var(--muted);font-size:clamp(16.5px,1.35vw,19px);margin:0 auto 46px}
+  .hero-sub strong{color:var(--ink);font-weight:400}
+  .btn{
+    display:inline-block;font-size:13.5px;letter-spacing:.24em;text-transform:uppercase;font-weight:400;
+    padding:17px 40px;border-radius:999px;color:var(--void);
+    background:linear-gradient(110deg,var(--gold),var(--rose));
+    transition:box-shadow .5s,transform .5s;
+    animation:breathe 6s ease-in-out infinite;
+  }
+  .btn:hover{box-shadow:0 0 60px rgba(255,217,160,.45);transform:scale(1.03)}
+  @keyframes breathe{0%,100%{box-shadow:0 0 24px rgba(255,217,160,.18)}50%{box-shadow:0 0 48px rgba(255,184,217,.32)}}
+  .btn-ghost{background:none;color:var(--ink);border:1px solid var(--glass-line);animation:none;margin-left:14px}
+  .btn-ghost:hover{border-color:var(--lav);box-shadow:0 0 30px rgba(201,184,255,.2)}
+  .down{
+    position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
+    font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:var(--faint);
+    display:flex;flex-direction:column;align-items:center;gap:12px;padding-left:.4em;
+  }
+  .down::after{content:"";width:1px;height:44px;background:linear-gradient(var(--lav),transparent);animation:fall 3.2s ease-in-out infinite}
+  @keyframes fall{0%{opacity:0;transform:scaleY(.2);transform-origin:top}45%{opacity:1;transform:scaleY(1)}100%{opacity:0;transform:scaleY(1)}}
+
+  /* ---------- floating glass sections ---------- */
+  section{padding:clamp(70px,11vh,130px) 0;position:relative}
+  .glass{
+    background:var(--glass);
+    -webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);
+    border:1px solid var(--glass-line);border-radius:30px;
+    padding:clamp(34px,4.5vw,64px);
+  }
+  .halo-title{
+    font-family:var(--disp);font-weight:400;
+    font-size:clamp(32px,4.4vw,58px);line-height:1.1;letter-spacing:.02em;
+    margin:0 0 18px;text-wrap:balance;
+  }
+  .halo-title em{font-style:normal;color:var(--gold)}
+  .eyebrow{font-size:11.5px;letter-spacing:.4em;text-transform:uppercase;color:var(--teal);margin:0 0 22px;font-weight:400}
+  .lead{color:var(--muted);max-width:38em;margin:0}
+
+  /* pillars — orbit cards */
+  .orbits{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin-top:clamp(34px,5vh,54px)}
+  .orbit{
+    background:var(--glass);border:1px solid var(--glass-line);border-radius:24px;
+    padding:30px 26px 34px;text-align:center;
+    -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+    transition:border-color .5s,transform .6s cubic-bezier(.22,1,.36,1),box-shadow .5s;
+  }
+  .orbit:hover{transform:translateY(-8px);border-color:rgba(255,217,160,.4);box-shadow:0 20px 60px rgba(11,10,26,.5),0 0 40px rgba(201,184,255,.12)}
+  .orbit-glyph{
+    width:58px;height:58px;margin:0 auto 20px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    border:1px solid var(--glass-line);
+    animation:spin 26s linear infinite;
+  }
+  .orbit:nth-child(2) .orbit-glyph{animation-duration:34s;animation-direction:reverse}
+  .orbit:nth-child(3) .orbit-glyph{animation-duration:30s}
+  .orbit:nth-child(4) .orbit-glyph{animation-duration:40s;animation-direction:reverse}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .orbit h3{font-family:var(--disp);font-weight:400;font-size:24px;letter-spacing:.04em;margin:0 0 12px}
+  .orbit p{color:var(--muted);font-size:14.5px;margin:0;line-height:1.65}
+
+  /* portrait */
+  .being{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:clamp(30px,5vw,70px);align-items:center;overflow:hidden}
+  html,body{overflow-x:clip}
+  .aura{position:relative;justify-self:center;width:min(100%,360px)}
+  .aura::before{
+    content:"";position:absolute;inset:-12%;border-radius:50%;
+    background:conic-gradient(from 0deg,var(--lav),var(--teal),var(--gold),var(--rose),var(--lav));
+    filter:blur(38px);opacity:.5;animation:spin 24s linear infinite;
+  }
+  .aura-img{
+    position:relative;border-radius:50% 50% 46% 46% / 42% 42% 54% 54%;overflow:hidden;
+    border:1px solid var(--glass-line);
+  }
+  .aura-img img{display:block;width:100%;height:auto;filter:saturate(.9) brightness(1.02)}
+  .aura-img::after{content:"";position:absolute;inset:0;background:radial-gradient(100% 100% at 50% 0%,transparent 55%,rgba(11,10,26,.5) 100%)}
+  .aura-cap{position:relative;text-align:center;margin-top:22px;font-size:11.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--muted)}
+  .being-copy p{color:var(--muted);margin:0 0 18px;max-width:36em}
+  .being-copy p strong{color:var(--ink);font-weight:400}
+  .mantra{
+    font-family:var(--disp);font-size:clamp(24px,2.6vw,36px);line-height:1.3;letter-spacing:.02em;
+    color:var(--ink);margin:30px 0 0;text-wrap:balance;
+  }
+  .mantra span{color:var(--gold)}
+  .mantra small{display:block;font-family:var(--body);font-size:11.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--faint);margin-top:16px}
+  .creds{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+  .cred{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);border:1px solid var(--glass-line);border-radius:999px;padding:8px 16px}
+  @media(max-width:860px){.being{grid-template-columns:1fr}}
+
+  /* modalities — constellation list */
+  .stars{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0 clamp(30px,4vw,64px);margin-top:clamp(30px,4vh,46px)}
+  .star{display:flex;gap:18px;align-items:baseline;padding:20px 0;border-bottom:1px solid rgba(201,184,255,.12)}
+  .star-dot{width:9px;height:9px;border-radius:50%;flex:none;position:relative;top:-1px;background:var(--lav);box-shadow:0 0 14px var(--lav);animation:twinkle 5s ease-in-out infinite}
+  .star:nth-child(2n) .star-dot{background:var(--teal);box-shadow:0 0 14px var(--teal);animation-delay:1.2s}
+  .star:nth-child(3n) .star-dot{background:var(--gold);box-shadow:0 0 14px var(--gold);animation-delay:2.4s}
+  .star:nth-child(5n) .star-dot{background:var(--rose);box-shadow:0 0 14px var(--rose);animation-delay:3.1s}
+  @keyframes twinkle{0%,100%{opacity:.45}50%{opacity:1}}
+  .star b{display:block;font-weight:500;font-size:16.5px;letter-spacing:.02em}
+  .star span{color:var(--muted);font-size:14px}
+
+  /* visit */
+  .visit-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:clamp(28px,5vw,64px);align-items:center}
+  .visit-meta{display:grid;gap:20px}
+  .vm{border-left:1px solid var(--glass-line);padding-left:20px}
+  .vm small{font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--faint);display:block;margin-bottom:6px}
+  .vm div{font-size:16px;line-height:1.6}
+  .vm a{color:var(--ink)}
+  .vm a:hover{color:var(--gold)}
+  @media(max-width:860px){.visit-grid{grid-template-columns:1fr}}
+
+  footer{position:relative;z-index:2;padding:30px 0 46px}
+  .foot{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;color:var(--faint);font-size:11.5px;letter-spacing:.22em;text-transform:uppercase}
+
+  .rv{opacity:0;transform:translateY(30px)}
+  @media(prefers-reduced-motion:reduce){
+    .rv{opacity:1;transform:none}
+    .btn,.orbit-glyph,.aura::before,.star-dot,.down::after,h1 .shimmer{animation:none}
+  }
+</style>
+</head>
+<body>
+
+<canvas id="dream" aria-hidden="true"></canvas>
+<div class="veil" aria-hidden="true"></div>
+
+<nav>
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top">Mosher <span>·</span> DO</a>
+    <div class="nav-links">
+      <a href="#path">The Path</a>
+      <a href="#physician">Physician</a>
+      <a href="#modalities">Modalities</a>
+      <a class="nav-tel" href="tel:+12082541986">(208) 254-1986</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+<header id="top">
+  <div class="wrap">
+    <p class="om">Performance Specialty Medicine · Coeur d'Alene, Idaho</p>
+    <h1>Return to the <span class="shimmer">energy</span> you were born with.</h1>
+    <p class="hero-sub rv">Most medicine manages symptoms. <strong>Dr. Dane Mosher, DO</strong> works at the source — measuring how your cells create energy, clearing what dims it, and letting the body remember how to heal.</p>
+    <div class="rv">
+      <a class="btn" href="tel:+12082541986">Begin the journey</a>
+      <a class="btn btn-ghost" href="#path">Drift down</a>
+    </div>
+  </div>
+  <div class="down" aria-hidden="true">Drift</div>
+</header>
+
+<section id="path">
+  <div class="wrap">
+    <div class="glass rv">
+      <p class="eyebrow">The path · four movements</p>
+      <h2 class="halo-title">Healing is a frequency the body <em>remembers</em>.</h2>
+      <p class="lead">Every protocol begins with the same question — not "what silences this symptom," but "what fell out of tune, and why." Four movements, one practice.</p>
+      <div class="orbits">
+        <div class="orbit rv">
+          <div class="orbit-glyph"><svg width="30" height="30" viewBox="0 0 30 30" fill="none"><circle cx="15" cy="15" r="11" stroke="#ffd9a0" stroke-width="1.2"/><circle cx="15" cy="4" r="2.4" fill="#ffd9a0"/></svg></div>
+          <h3>Energy</h3>
+          <p>Fatigue isn't a personality trait — it's a cellular signal. We listen to how your mitochondria produce energy, and find what's draining the light.</p>
+        </div>
+        <div class="orbit rv">
+          <div class="orbit-glyph"><svg width="30" height="30" viewBox="0 0 30 30" fill="none"><circle cx="15" cy="15" r="11" stroke="#8fe8d0" stroke-width="1.2"/><circle cx="26" cy="15" r="2.4" fill="#8fe8d0"/></svg></div>
+          <h3>Testing</h3>
+          <p>Objective measurement of cellular energy production, so treatment follows what the body actually says — not a guess.</p>
+        </div>
+        <div class="orbit rv">
+          <div class="orbit-glyph"><svg width="30" height="30" viewBox="0 0 30 30" fill="none"><circle cx="15" cy="15" r="11" stroke="#ffb8d9" stroke-width="1.2"/><circle cx="15" cy="26" r="2.4" fill="#ffb8d9"/></svg></div>
+          <h3>Repair</h3>
+          <p>Releasing what interferes — toxins, hidden stressors, immune triggers — and giving the body what it needs to rebuild itself.</p>
+        </div>
+        <div class="orbit rv">
+          <div class="orbit-glyph"><svg width="30" height="30" viewBox="0 0 30 30" fill="none"><circle cx="15" cy="15" r="11" stroke="#c9b8ff" stroke-width="1.2"/><circle cx="4" cy="15" r="2.4" fill="#c9b8ff"/></svg></div>
+          <h3>Optimization</h3>
+          <p>"Normal labs" is a low bar. The aim is function — clearer energy, deeper resilience, a higher baseline, measurably, over time.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="physician">
+  <div class="wrap">
+    <div class="glass being rv">
+      <div class="aura">
+        <div class="aura-img"><img src="../assets/dane-2.jpg" alt="Dr. Dane Mosher, DO" width="1050" height="1400"></div>
+        <p class="aura-cap">Dane Mosher · DO</p>
+      </div>
+      <div class="being-copy">
+        <p class="eyebrow" style="margin-bottom:18px">The physician</p>
+        <p>At fifteen, <strong>Dane Mosher</strong> read <em>Life Extension</em> by Durk Pearson and Sandy Shaw, and a door opened that never closed: health is not a mystery to be endured. It can be measured, understood, and gently engineered.</p>
+        <p>That conviction carried him through Family Medicine residency at East Tennessee State University, certification with the Institute for Functional Medicine, and onto the board of the American Academy of Environmental Medicine. Since 2011 he has walked with the autism community through The Johnson Center in Austin, Texas — where root-cause medicine still had answers after everything else went quiet.</p>
+        <p class="mantra">"I aim to be the physician I would <span>choose for myself</span>."<small>— Dane Mosher, DO</small></p>
+        <div class="creds">
+          <span class="cred">IFM Certified · 2015</span>
+          <span class="cred">AAEM Board · 2017</span>
+          <span class="cred">Johnson Center · 2011</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="modalities">
+  <div class="wrap">
+    <div class="glass rv">
+      <p class="eyebrow">Eight modalities · one constellation</p>
+      <h2 class="halo-title">The <em>instruments</em> of the practice.</h2>
+      <div class="stars">
+        <div class="star rv"><span class="star-dot"></span><div><b>Functional medicine</b><span>IFM-certified, root-cause framework since 2015.</span></div></div>
+        <div class="star rv"><span class="star-dot"></span><div><b>Environmental medicine</b><span>The effects of toxins and environmental exposures.</span></div></div>
+        <div class="star rv"><span class="star-dot"></span><div><b>Immunotherapy</b><span>Allergies and autoimmune conditions, gently retrained.</span></div></div>
+        <div class="star rv"><span class="star-dot"></span><div><b>Medical ozone therapies</b><span>Oxidative support for repair and immune function.</span></div></div>
+        <div class="star rv"><span class="star-dot"></span><div><b>Hormone &amp; immune balance</b><span>Imbalance and dysfunction, resolved at the source.</span></div></div>
+        <div class="star rv"><span class="star-dot"></span><div><b>Light &amp; circadian rhythm</b><span>Light and rhythm as clinical instruments.</span></div></div>
+        <div class="star rv"><span class="star-dot"></span><div><b>Hair tissue mineral analysis</b><span>Mineral status and heavy-metal burden, over time.</span></div></div>
+        <div class="star rv"><span class="star-dot"></span><div><b>Autism spectrum care</b><span>Since 2011, through The Johnson Center, Austin TX.</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="visit">
+  <div class="wrap">
+    <div class="glass visit-grid rv">
+      <div>
+        <p class="eyebrow">Arrive</p>
+        <h2 class="halo-title">One conversation can <em>change the orbit</em>.</h2>
+        <p class="lead" style="margin-bottom:34px">The practice rests inside The Collective in Coeur d'Alene. Call to begin.</p>
+        <a class="btn" href="tel:+12082541986">Call (208) 254-1986</a>
+      </div>
+      <div class="visit-meta">
+        <div class="vm"><small>Location</small><div><a href="https://www.google.com/maps/search/?api=1&amp;query=2238+N+Government+Way%2C+Coeur+d%27Alene%2C+ID+83814" target="_blank" rel="noopener">Inside The Collective<br>2238 N Government Way<br>Coeur d'Alene, Idaho 83814</a></div></div>
+        <div class="vm"><small>Phone</small><div><a href="tel:+12082541986">(208) 254-1986</a></div></div>
+        <div class="vm"><small>Practice</small><div>Performance Specialty Medicine<br>Dane Mosher, DO</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <span>Performance Specialty Medicine</span>
+    <span>© 2026 · Coeur d'Alene, Idaho</span>
+  </div>
+</footer>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<script>
+(function(){
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* =========================================================
+     THE DREAM — slow domain-warped iridescent field.
+     WebGL frag shader; time crawls, colors breathe.
+     ========================================================= */
+  var canvas = document.getElementById('dream');
+  var gl = canvas.getContext('webgl', {antialias:false});
+  if (gl && !reduced){
+    var vsrc = 'attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}';
+    var fsrc = [
+      'precision highp float;',
+      'uniform float u_t;uniform vec2 u_r;uniform vec2 u_m;uniform float u_s;',
+      'float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}',
+      'float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);',
+      ' return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}',
+      'float fbm(vec2 p){float v=0.,a=.5;',
+      ' for(int i=0;i<5;i++){v+=a*n(p);p=p*2.02+vec2(3.7,1.3);a*=.52;}return v;}',
+      'vec3 pal(float t){',
+      ' return vec3(.52,.44,.72)+vec3(.42,.38,.34)*cos(6.2831*(vec3(1.,.92,.85)*t+vec3(.05,.28,.55)));}',
+      'void main(){',
+      ' vec2 uv=gl_FragCoord.xy/u_r;',
+      ' vec2 p=(gl_FragCoord.xy-.5*u_r)/min(u_r.x,u_r.y);',
+      ' float t=u_t*.028;',
+      ' p+= (u_m-.5)*.18;',
+      ' vec2 q=vec2(fbm(p*1.5+vec2(t,-t*.7)),fbm(p*1.5+vec2(-t*.6,t*.9)+5.2));',
+      ' vec2 r=vec2(fbm(p*1.8+3.2*q+vec2(t*1.3,2.8)),fbm(p*1.8+3.2*q+vec2(8.3,t)));',
+      ' float f=fbm(p*1.6+3.4*r-u_s*.35);',
+      ' vec3 col=pal(f*1.15+q.x*.35+u_s*.06+t*.35);',
+      ' col*= .28+.9*smoothstep(.15,.95,f);',
+      ' vec3 deep=vec3(.043,.039,.10);',
+      ' col=mix(deep,col,smoothstep(.12,.78,f));',
+      ' col+=vec3(1.,.85,.62)*pow(max(0.,fbm(p*2.4+r*2.+vec2(-t,t*.5))-.62),2.)*1.4;',
+      ' float sparkle=step(.9975,h(floor(gl_FragCoord.xy/2.)))*pow(.5+.5*sin(u_t*1.6+h(floor(gl_FragCoord.xy/2.))*40.),3.);',
+      ' col+=vec3(.9,.9,1.)*sparkle*.5;',
+      ' float vig=smoothstep(1.5,.35,length(p));',
+      ' col*=mix(.5,1.,vig);',
+      ' gl_FragColor=vec4(col,1.);}'
+    ].join('\n');
+    function sh(type,src){var s=gl.createShader(type);gl.shaderSource(s,src);gl.compileShader(s);return s;}
+    var prog=gl.createProgram();
+    gl.attachShader(prog,sh(gl.VERTEX_SHADER,vsrc));
+    gl.attachShader(prog,sh(gl.FRAGMENT_SHADER,fsrc));
+    gl.linkProgram(prog);gl.useProgram(prog);
+    var buf=gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER,buf);
+    gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
+    var loc=gl.getAttribLocation(prog,'p');
+    gl.enableVertexAttribArray(loc);
+    gl.vertexAttribPointer(loc,2,gl.FLOAT,false,0,0);
+    var uT=gl.getUniformLocation(prog,'u_t'),uR=gl.getUniformLocation(prog,'u_r'),
+        uM=gl.getUniformLocation(prog,'u_m'),uS=gl.getUniformLocation(prog,'u_s');
+    var mx=.5,my=.5,smx=.5,smy=.5;
+    addEventListener('pointermove',function(e){mx=e.clientX/innerWidth;my=e.clientY/innerHeight;});
+    function size(){
+      var d=Math.min(devicePixelRatio,1.5);
+      canvas.width=innerWidth*d;canvas.height=innerHeight*d;
+      gl.viewport(0,0,canvas.width,canvas.height);
+    }
+    size();addEventListener('resize',size);
+    var t0=performance.now();
+    (function tick(){
+      smx+=(mx-smx)*.02;smy+=(my-smy)*.02;
+      gl.uniform1f(uT,(performance.now()-t0)/1000);
+      gl.uniform2f(uR,canvas.width,canvas.height);
+      gl.uniform2f(uM,smx,1-smy);
+      gl.uniform1f(uS,scrollY/innerHeight);
+      gl.drawArrays(gl.TRIANGLES,0,3);
+      requestAnimationFrame(tick);
+    })();
+  } else if (canvas){
+    canvas.style.background='radial-gradient(120% 100% at 30% 20%,#2a2354 0%,#0b0a1a 55%),radial-gradient(80% 80% at 80% 80%,#1c3b3a 0%,transparent 60%)';
+  }
+
+  /* ---------- lenis + reveals ---------- */
+  var lenis=null;
+  if (window.Lenis && !reduced){
+    lenis=new Lenis({lerp:.07});
+    document.querySelectorAll('a[href^="#"]').forEach(function(a){
+      a.addEventListener('click',function(e){
+        var t=document.querySelector(a.getAttribute('href'));
+        if(t){e.preventDefault();lenis.scrollTo(t,{offset:-40});}
+      });
+    });
+  }
+  if (window.gsap && !reduced){
+    gsap.registerPlugin(ScrollTrigger);
+    if(lenis){
+      lenis.on('scroll',ScrollTrigger.update);
+      gsap.ticker.add(function(time){lenis.raf(time*1000);});
+      gsap.ticker.lagSmoothing(0);
+    }
+    gsap.from('h1',{opacity:0,y:34,duration:1.6,ease:'power3.out',delay:.2});
+    gsap.from('.om',{opacity:0,duration:1.6,ease:'power2.out',delay:.1});
+    gsap.utils.toArray('.rv').forEach(function(el){
+      gsap.to(el,{opacity:1,y:0,duration:1.2,ease:'power3.out',
+        scrollTrigger:{trigger:el,start:'top 88%'}});
+    });
+  } else {
+    document.querySelectorAll('.rv').forEach(function(el){el.style.opacity=1;el.style.transform='none';});
+  }
+})();
+</script>
+</body>
+</html>
